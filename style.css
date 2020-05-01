@@ -10,10 +10,6 @@ body {
     padding-bottom: 40px;
 }
 
-@media (max-width: 1280px) {}
-
-@media (max-width: 768px) {}
-
 .page-container {
     position: relative;
     min-height: 100vh;
@@ -124,3 +120,23 @@ footer {
     color: #CAFFB9;
     position: relative;
 }
+
+@media (max-width: 1280px) {
+    .artist-img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .artist-button {
+        height: 150px;
+        width: 150px;
+    }
+
+    .artist {
+        margin: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+@media (max-width: 768px) {}
