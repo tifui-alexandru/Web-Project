@@ -121,6 +121,25 @@ footer {
     position: relative;
 }
 
+.formation_name {
+    width: 160px;
+    height: 90px;
+    color: whitesmoke;
+}
+
+.formation_image {
+    width: 320px;
+    height: 180px;
+}
+
+.subtitle_text {
+    color: white;
+}
+
+.artist_details {
+    background-color: whitesmoke;
+}
+
 @media (max-width: 1280px) {
     .artist-img {
         width: 150px;

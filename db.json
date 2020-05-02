@@ -3,10 +3,9 @@
     {
       "id": 1,
       "name": "Trooper",
-      "img": "https://www.posadarock.com/files/upload-dir/19-trooper.jpg",
+      "img": "https://maximumrock.ro/wp-content/uploads/2017/08/trooper6-678x381.jpg",
       "officialYoutube": "https://www.youtube.com/user/trooperocks",
       "type": "Formatie",
-      "status": "În activitate",
       "yearsOfActivity": "1995 - prezent",
       "albums": [
         {
@@ -30,7 +29,7 @@
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Romanian_rock_band_Iris%2C_2010.jpg/220px-Romanian_rock_band_Iris%2C_2010.jpg",
       "officialYoutube": "https://www.youtube.com/channel/UC9B5eozl9BM6IxV3tWMZRhQ",
       "type": "Formatie",
-      "status": "În activitate",
+      "": "În activitate",
       "yearsOfActivity": "1975 - prezent",
       "albums": [
         {
@@ -67,7 +66,6 @@
       "img": "https://media.cancan.ro/unsafe/1140x684/smart/filters:quality(90):format(jpg)/wp-content/uploads/2020/04/INNA-canta-pentru-ELLE-USA-SongAssociation.png",
       "officialYoutube": "https://www.youtube.com/channel/UCr8RbU-D7iSvpy0ZO-AasoQ",
       "type": "Artist individual",
-      "status": "În activitate",
       "yearsOfActivity": "2008 - prezent",
       "albums": [
         {
@@ -93,7 +91,6 @@
       "img": "https://www.cotidianul.ro/wp-content/uploads/2018/01/14/1274101005ackent-1000x600.jpg",
       "officialYoutube": "https://www.youtube.com/channel/UCQyFhLHHNC4QLaqMAE0ZB9w",
       "type": "Formatie",
-      "status": "În activitate",
       "yearsOfActivity": "1998 - prezent",
       "albums": [
         {
@@ -119,7 +116,6 @@
       "img": "https://i.ytimg.com/vi/9WkTnQ-uwP0/hqdefault.jpg",
       "officialYoutube": "-",
       "type": "Formatie",
-      "status": "Retrași",
       "yearsOfActivity": "1994 - 2000",
       "albums": [
         {
@@ -145,7 +141,6 @@
       "img": "https://storage0.dms.mpinteractiv.ro/media/1/1/1706/8776565/2/johnny-raducanu-liviu-chirica.jpg?width=560",
       "officialYoutube": "https://www.youtube.com/channel/UCx9wYlwEh37pHx7HF3d89xQ",
       "type": "Artist individual",
-      "status": "Retras",
       "yearsOfActivity": "1966 - 2009",
       "albums": [
         {
@@ -171,7 +166,6 @@
       "img": "https://www.electronicbeats.net/app/uploads/sites/9/2019/07/nu-zau-2017-07-1038x584.png",
       "officialYoutube": "https://www.youtube.com/channel/UCz0MCxVFZB2Z1SUouG3aqpw",
       "type": "Artist individual",
-      "status": "În activitate",
       "yearsOfActivity": "2012 - prezent",
       "albums": [
         {
@@ -191,7 +185,6 @@
       "img": "https://static.infomusic.ro/media/2015/04/Bogdan-El-Negro-800x450.jpg",
       "officialYoutube": "https://www.youtube.com/user/elnegroromania",
       "type": "Formatie",
-      "status": "În activitate",
       "yearsOfActivity": "1999 - prezent",
       "albums": [
         {
@@ -211,7 +204,6 @@
       "img": "https://i.ytimg.com/vi/uNdjDZYpiDg/maxresdefault.jpg",
       "officialYoutube": "https://www.youtube.com/channel/UCq4ei2v3wm3Q6IDYJ8pmSFw",
       "type": "Formatie",
-      "status": "În activitate",
       "yearsOfActivity": "2012 - prezent",
       "albums": [
         {
@@ -237,7 +229,6 @@
       "img": "https://www.avantaje.ro/wp-content/uploads/2019/10/F%C4%83r%C3%A2mi%C8%9B%C4%83-Lambru.png",
       "officialYoutube": "https://www.youtube.com/channel/UCXHgA89QilhKzhGJh8hPf2Q",
       "type": "Artist individual",
-      "status": "Retras",
       "yearsOfActivity": "1962 - 1975",
       "albums": [
         {
@@ -274,7 +265,6 @@
       "img": "https://mediacdn.libertatea.ro/unsafe/1200x1200/smart/filters:contrast(8):quality(80)/https://static4.libertatea.ro/wp-content/uploads/2017/03/sofia_vicoveanca.jpg",
       "officialYoutube": "-",
       "type": "Artist individual",
-      "status": "În activitate",
       "yearsOfActivity": "1960 - prezent",
       "albums": [
         {
