@@ -111,7 +111,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         let editButton = document.createElement('button');
         editButton.addEventListener('click', () => {
             if (adminCheck())
-                editArtist(typeArtist, artists[i].id);
+                editArtist(typeArtist, artists[i]);
         });
         editButton.innerText = 'Editează';
 
@@ -122,28 +122,12 @@ function appendArtistsToDOM(artists, typeArtist) {
         });
         deleteButton.innerText = 'Șterge';
 
-        let addAlbumButton = document.createElement('button');
-        addAlbumButton.addEventListener('click', () => {
-            if (adminCheck())
-                postAlbum();
-        });
-        addAlbumButton.innerText = 'Adaugă album';
-
-        let addSingleButton = document.createElement('button');
-        addSingleButton.addEventListener('click', () => {
-            if (adminCheck())
-                postSingle();
-        });
-        addSingleButton.innerText = 'Adaugă single';
-
         let container = document.createElement('div');
         container.appendChild(img);
         container.appendChild(name);
         container.appendChild(detailsButton);
         container.appendChild(editButton);
         container.appendChild(deleteButton);
-        container.appendChild(addAlbumButton);
-        container.appendChild(addSingleButton);
         
         artistsElement.appendChild(container);
     }
@@ -279,24 +263,233 @@ function postArtist(typeArtist) {
     });
 }
 
-function updateArtist(typeArtist, id) {
-    console.log('to be coninued');
+function updateArtist(typeArtist, putObject) {
+    artistLocalHost = musicTypeDict[typeArtist].localHost;
+
+    formName = document.getElementById('formName').value;
+    formImg = document.getElementById('formImg').value;
+    formActivity = document.getElementById('formActivity').value; 
+    formYt = document.getElementById('formYt').value;
+    if (formName) putObject.name = formName;
+    if (formImg) putObject.img = formImg;
+    if (formActivity) putObject.activity = formActivity;
+    if (formYt) putObject.officialYoutube = formYt;
+
+    fetch(artistLocalHost + '/' + putObject.id, {
+        method: 'PUT',
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(putObject)
+    }).then(function () {
+        clearAddMenu(typeArtist);
+    });
 }
 
-function editArtist(typeArtist, id) {
-    console.log('to be continued');
+function editArtist(typeArtist, artist) {
+    let labelName = getLabel('name', 'Nume artist/formație');
+    let formName = getInput('name', 'formName', artist.name);
+    let labelImg = getLabel('url', 'URL imagine artist/formație');
+    let formImg = getInput('url', 'formImg', artist.img);
+    let labelYt = getLabel('url', 'URL canal oficial de Youtube');
+    let formYt = getInput('url', 'formYt', artist.officialYoutube);
+    let labelActivity = getLabel('time', 'Perioadă de activitate');
+    let formActivity = getInput('time', 'formActivity', artist.yearsOfActivity);
+
+    let addAlbumButton = document.createElement('button');
+    addAlbumButton.addEventListener('click', () => {
+        if (adminCheck())
+            displayAddAlbumMenu(typeArtist, artist);
+    });
+    addAlbumButton.innerText = 'Adaugă album';
+    let addSingleButton = document.createElement('button');
+    addSingleButton.addEventListener('click', () => {
+        if (adminCheck())
+            displayAddSingleMenu(typeArtist, artist);
+    });
+    addSingleButton.innerText = 'Adaugă single';
+
+    let container = document.createElement('div');
+    container.className = 'artist_details';
+    container.id = 'display_menu';
+
+    container.appendChild(labelName);
+    container.appendChild(formName);
+    container.appendChild(labelImg);
+    container.appendChild(formImg);
+    container.appendChild(labelYt);
+    container.appendChild(formYt);
+    container.appendChild(labelActivity);
+    container.appendChild(formActivity);
+    container.appendChild(addAlbumButton);
+    container.appendChild(addSingleButton);
+
+    let updateButton = document.createElement('button');
+    updateButton.addEventListener('click', () => {
+        postArtist(typeArtist);
+        clearAddMenu(typeArtist);
+    });
+    updateButton.innerText = 'Salvează';
+    updateButton.id = 'update-button'
+
+    let cancelButton = document.createElement('button');
+    cancelButton.addEventListener('click', () => {
+        clearAddMenu(typeArtist);
+    });
+    cancelButton.innerText = 'Anulează';
+
+    container.appendChild(updateButton);
+    container.appendChild(cancelButton);
+
+    while (mainTag[0].firstChild)
+        mainTag[0].removeChild(mainTag[0].firstChild);
+    mainTag[0].appendChild(container);
+
+    clearArtists(typeArtist);
+
+    let newUpdateButton = updateButton.cloneNode(true);
+    updateButton.parentNode.replaceChild(newUpdateButton, updateButton);
+    updateButton = document.getElementById('update-button');
+
+    updateButton.addEventListener('click', () => {
+        updateArtist(typeArtist, artist);
+    });
 }
 
-function postAlbum() {
-    console.log('to be continued');
+function postAlbum(typeArtist, artist) {
+    artistLocalHost = musicTypeDict[typeArtist].localHost;
+
+    let formName = document.getElementById('formName');
+    let formNoSongs = document.getElementById('formNoSongs');
+    let formRelease = document.getElementById('formRelease');
+
+    const postAlbum = {
+        nameAlbum: formName.value,
+        releaseYear: formRelease.value,
+        songNumber: formNoSongs.value
+    }
+
+    postObject = artist;
+    postObject.albums.push(postAlbum);
+
+    deleteArtist(typeArtist, artist.id);
+
+    fetch(artistLocalHost, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(postObject)
+    }).then(() => {
+        getArtists(typeArtist);
+    });
 }  
 
-function postSingle() {
-    console.log('to be continued');
+function postSingle(typeArtist, artist) {
+    artistLocalHost = musicTypeDict[typeArtist].localHost;
+
+    let formName = document.getElementById('formName');
+    let formRelease = document.getElementById('formRelease');
+
+    const postSingle = {
+        nameSingle: formName.value,
+        releaseYear: formRelease.value,
+    }
+
+    postObject = artist;
+    postObject.singles.push(postSingle);
+
+    deleteArtist(typeArtist, artist.id);
+
+    fetch(artistLocalHost, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(postObject)
+    }).then(() => {
+        getArtists(typeArtist);
+    });
 }
 
-function resetForm() {
+function displayAddAlbumMenu(typeArtist, artist) {
+    let labelName = getLabel('name', 'Nume album: ');
+    let formName = getInput('name', 'formName', '');
+    let labelNoSongs = getLabel('song', 'Număr de piese pe album: ');
+    let formNoSongs = getInput('song', 'formNoSongs', '');
+    let labelRelease = getLabel('release', 'Anul lansării: ');
+    let formRelease = getInput('release', 'formRelease', '');
 
+    let container = document.createElement('div');
+    container.className = 'artist_details';
+
+    container.appendChild(labelName);
+    container.appendChild(formName);
+    container.appendChild(labelNoSongs);
+    container.appendChild(formNoSongs);
+    container.appendChild(labelRelease);
+    container.appendChild(formRelease);
+
+    let updateButton = document.createElement('button');
+    updateButton.addEventListener('click', () => {
+        postAlbum(typeArtist, artist);
+        clearAddMenu(typeArtist);
+    });
+    updateButton.innerText = 'Salvează';
+    updateButton.id = 'update-button';
+
+    let cancelButton = document.createElement('button');
+    cancelButton.addEventListener('click', () => {
+        clearAddMenu(typeArtist);
+    });
+    cancelButton.innerText = 'Anulează';
+
+    container.appendChild(updateButton);
+    container.appendChild(cancelButton);
+
+    while (mainTag[0].firstChild)
+        mainTag[0].removeChild(mainTag[0].firstChild);
+    mainTag[0].appendChild(container);
+
+    clearArtists(typeArtist);
+}
+
+function displayAddSingleMenu(typeArtist, artist) {
+    let labelName = getLabel('name', 'Nume album: ');
+    let formName = getInput('name', 'formName', '');
+    let labelRelease = getLabel('release', 'Anul lansării: ');
+    let formRelease = getInput('release', 'formRelease', '');
+
+    let container = document.createElement('div');
+    container.className = 'artist_details';
+
+    container.appendChild(labelName);
+    container.appendChild(formName);
+    container.appendChild(labelRelease);
+    container.appendChild(formRelease);
+
+    let updateButton = document.createElement('button');
+    updateButton.addEventListener('click', () => {
+        postSingle(typeArtist, artist);
+        clearAddMenu(typeArtist);
+    });
+    updateButton.innerText = 'Salvează';
+    updateButton.id = 'button-menu';
+
+    let cancelButton = document.createElement('button');
+    cancelButton.addEventListener('click', () => {
+        clearAddMenu(typeArtist);
+    });
+    cancelButton.innerText = 'Anulează';
+
+    container.appendChild(updateButton);
+    container.appendChild(cancelButton);
+
+    while (mainTag[0].firstChild)
+        mainTag[0].removeChild(mainTag[0].firstChild);
+    mainTag[0].appendChild(container);
+
+    clearArtists(typeArtist);
 }
 
 function displayDetalis(typeArtist, id) {
@@ -323,6 +516,7 @@ function getInput(name, id, placeholder) {
     temp.type = 'text';
     temp.name = name;
     temp.id = id;
+    temp.placeholder = placeholder;
     return temp;
 }
 
@@ -352,6 +546,7 @@ function displayAddMenu(typeArtist) {
 
     let container = document.createElement('div');
     container.className = 'artist_details';
+    container.id = 'display_menu';
 
     container.appendChild(labelName);
     container.appendChild(formName);
@@ -372,6 +567,7 @@ function displayAddMenu(typeArtist) {
         clearAddMenu(typeArtist);
     });
     updateButton.innerText = 'Salvează';
+    updateButton.id = 'update-button'
 
     let cancelButton = document.createElement('button');
     cancelButton.addEventListener('click', () => {
@@ -398,8 +594,10 @@ function clearAddMenu(typeArtist) {
 
 function clearArtists(typeArtist) {
     let artistsElement = musicTypeDict[typeArtist].element;
-    while (artistsElement.firstChild)
-        artistsElement.removeChild(artistsElement.firstChild);
+    if (artistsElement) {
+        while (artistsElement.firstChild)
+            artistsElement.removeChild(artistsElement.firstChild);
+    }   
 }
 
 for (let i = 0; i < musicTypeArray.length; ++i) {

@@ -9,13 +9,11 @@
       "yearsOfActivity": "1995 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Desant",
           "releaseYear": 2005,
           "songNumber": 18
         },
         {
-          "idAlbum": 2,
           "nameAlbum": "Poemele Valahiei",
           "releaseYear": 2009,
           "songNumber": 13
@@ -33,13 +31,11 @@
       "yearsOfActivity": "1975 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Nu te opri",
           "releaseYear": 1988,
           "songNumber": 8
         },
         {
-          "idAlbum": 2,
           "nameAlbum": "Maxima",
           "releaseYear": 2005,
           "songNumber": 13
@@ -47,12 +43,10 @@
       ],
       "singles": [
         {
-          "idSingle": 1,
           "nameSingle": "Casino",
           "releaseYear": 1998
         },
         {
-          "idSingle": 2,
           "nameSingle": "Da, Da, eu știu!",
           "releaseYear": 2002
         }
@@ -69,7 +63,6 @@
       "yearsOfActivity": "2008 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "HOT",
           "releaseYear": 2009,
           "songNumber": 11
@@ -77,7 +70,6 @@
       ],
       "singles": [
         {
-          "idSingle": 1,
           "nameSingle": "Love",
           "releaseYear": 2009
         }
@@ -94,7 +86,6 @@
       "yearsOfActivity": "1998 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "SOS",
           "releaseYear": 2005,
           "songNumber": 12
@@ -102,7 +93,6 @@
       ],
       "singles": [
         {
-          "idSingle": 1,
           "nameSingle": "My passion",
           "releaseYear": 2010
         }
@@ -119,19 +109,44 @@
       "yearsOfActivity": "1994 - 2000",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Daciada",
           "releaseYear": 1996,
           "songNumber": 11
         },
         {
-          "idAlbum": 2,
           "nameAlbum": "Marea scofală",
           "releaseYear": 1999,
           "songNumber": 10
         }
       ],
       "singles": []
+    },
+    {
+      "name": "CTC",
+      "img": "https://www.viata-libera.ro/media/k2/items/cache/27e78af375664adf07011069c11d25fb_XL.jpg",
+      "officialYoutube": "https://www.youtube.com/user/FacemRecordsTV",
+      "type": "Formație",
+      "yearsOfActivity": "2005 - prezent",
+      "albums": [
+        {
+          "nameAlbum": "Inspecția tehnică periodică",
+          "releaseYear": "2011",
+          "songNumber": "22"
+        }
+      ],
+      "singles": [],
+      "id": 2
+    },
+    {
+      "name": "Paraziții",
+      "img": "https://i.ytimg.com/vi/5HeWu6sbMXM/maxresdefault.jpg",
+      "officialYoutube": "https://www.youtube.com/user/PARAZITII20cmOFICIAL",
+      "type": "Formație",
+      "yearsOfActivity": "x",
+      "albums": [],
+      "singles": [],
+      "id": 3,
+      "activity": "1995 - prezent"
     }
   ],
   "jazz-artists": [
@@ -144,13 +159,11 @@
       "yearsOfActivity": "1966 - 2009",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Jazz trio",
           "releaseYear": 2005,
           "songNumber": 3
         },
         {
-          "idAlbum": 2,
           "nameAlbum": "Inside Stories",
           "releaseYear": 2009,
           "songNumber": 11
@@ -169,7 +182,6 @@
       "yearsOfActivity": "2012 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Pason",
           "releaseYear": 2012,
           "songNumber": 2
@@ -188,7 +200,6 @@
       "yearsOfActivity": "1999 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Antipanica",
           "releaseYear": 2008,
           "songNumber": 14
@@ -207,7 +218,6 @@
       "yearsOfActivity": "2012 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "O.S.O.D",
           "releaseYear": 2015,
           "songNumber": 16
@@ -215,7 +225,6 @@
       ],
       "singles": [
         {
-          "idSingle": 1,
           "nameSingle": "Dubai",
           "releaseYear": 2017
         }
@@ -232,13 +241,11 @@
       "yearsOfActivity": "1962 - 1975",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Muzică lăutărească",
           "releaseYear": 1962,
           "songNumber": 4
         },
         {
-          "idAlbum": 2,
           "nameAlbum": "Sârba de la Turnu-Măgurele",
           "releaseYear": 1967,
           "songNumber": 5
@@ -246,12 +253,10 @@
       ],
       "singles": [
         {
-          "idSingle": 1,
           "nameSingle": "Călușul",
           "releaseYear": 1963
         },
         {
-          "idSingle": 1,
           "nameSingle": "Sârba de la Zimnicea",
           "releaseYear": 1966
         }
@@ -268,7 +273,6 @@
       "yearsOfActivity": "1960 - prezent",
       "albums": [
         {
-          "idAlbum": 1,
           "nameAlbum": "Sunt fată de moldovean",
           "releaseYear": 1967,
           "songNumber": 5
