@@ -171,8 +171,9 @@ function appendDetailsToDOM(typeArtist, artist) {
     activity.innerText = 'Ani de activitate: ' + artist.yearsOfActivity;
     activity.className = 'details_text';
 
-    let ytLink = document.createElement('p');
-    ytLink.innerText = 'Link către canalul de Youtube:\n' + artist.officialYoutube;
+    let ytLink = document.createElement('a');
+    ytLink.innerText = 'Link către canalul de Youtube';
+    ytLink.href = artist.officialYoutube;
     ytLink.className = 'details_text';
 
     let info = document.createElement('div');
@@ -639,9 +640,9 @@ function getInput(name, id, placeholder) {
 
 function getCheckbox(str) {
     let temp = document.createElement('input');
-    temp.type = 'checkbox';
+    temp.type = 'radio';
     temp.id = str;
-    temp.name = str;
+    temp.name = 'type';
     temp.value = str;
     return temp;
 }
@@ -749,10 +750,19 @@ function clearArtists(typeArtist) {
     }   
 }
 
-for (let i = 0; i < musicTypeArray.length; ++i) {
-    let elem = document.getElementById(musicTypeArray[i] + "_button");
-    elem.addEventListener('click', () => {
-        updateMain(musicTypeArray[i]);
-        getArtists(musicTypeArray[i]);
-    });
+function startWebPage() {
+    for (let i = 0; i < musicTypeArray.length; ++i) {
+        let elem = document.getElementById(musicTypeArray[i] + "_button");
+        elem.addEventListener('click', () => {
+            updateMain(musicTypeArray[i]);
+            getArtists(musicTypeArray[i]);
+        });
+    }
 }
+
+homeButton = document.getElementById('home-button');
+homeButton.addEventListener('click', () => {
+    location.href = 'file:///home/alexandru/Documents/work/Web-Project/index.html';
+});
+
+startWebPage();
