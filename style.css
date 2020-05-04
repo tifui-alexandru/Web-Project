@@ -130,9 +130,15 @@ footer {
 }
 
 .formation_name {
-    width: 160px;
-    height: 90px;
+    display: block;
+    width: 520px;
+    height: 45px;
     color: whitesmoke;
+    font-size: 20px;
+    background: darkslategray;
+    text-align: center;
+    text-justify: unset;
+    line-height: 45px;
 }
 
 .formation_image {
@@ -145,7 +151,27 @@ footer {
 }
 
 .artist_details {
-    background-color: whitesmoke;
+    background-color: #231F20;
+    width: 1000px;
+    height: max-content;
+}
+
+.formation_name_details {
+    display: block;
+    width: 1000px;
+    height: 60px;
+    color: whitesmoke;
+    font-size: 20px;
+    background: darkslategray;
+    text-align: center;
+    text-justify: unset;
+    line-height: 60px;
+    margin: 0;
+}
+
+.formation_image_details {
+    width: 640px;
+    height: 360px;
 }
 
 .button {
@@ -162,6 +188,102 @@ footer {
     height: 50px;
     width: 250px;
     font-size: 25px;
+}
+
+.big_container_formation {
+    display: flex;
+}
+
+.container_formation {
+    display: flex;
+    flex-direction: column;
+}
+
+.container_formation .button {
+    border-radius: 0px;
+    height: 60px;
+    width: 200px;
+}
+
+.music_types_container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.artist-box {
+    padding-bottom: 50px;
+}
+
+.details-photo-and-info {
+    display: flex;
+    line-height: 10px;
+    background-color: #231F20;
+    font-size: 20px;
+}
+
+.details_text {
+    color: whitesmoke;
+    line-height: 1;
+    margin-left: 20px;
+}
+
+.info_text {
+    margin-top: 70px;
+}
+
+.album {
+    margin-top: 50px;
+}
+
+.single {
+    margin-top: 50px;
+}
+
+.album_container {
+    line-height: 1;
+    border: solid;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: max-content;
+    height: max-content;
+    margin-bottom: 50px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.single_container {
+    line-height: 1;
+    border: solid;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: max-content;
+    height: max-content;
+    margin-bottom: 50px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.album_name {
+    font-weight: bold;
+    font-size: 30px;
+    font-family: monospace;
+}
+
+.back_button {
+    background: darkslategray;
+    color: white;
+    border: solid;
+    border-radius: 10px;
+    width: 360px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+.discography {
+    display: flex;
+    color: whitesmoke;
+    justify-content: space-around;
 }
 
 @media (max-width: 1280px) {

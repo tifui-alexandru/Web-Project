@@ -5,7 +5,7 @@
       "name": "Trooper",
       "img": "https://maximumrock.ro/wp-content/uploads/2017/08/trooper6-678x381.jpg",
       "officialYoutube": "https://www.youtube.com/user/trooperocks",
-      "type": "Formatie",
+      "type": "Formație",
       "yearsOfActivity": "1995 - prezent",
       "albums": [
         {
@@ -24,9 +24,9 @@
     {
       "id": 2,
       "name": "Iris",
-      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Romanian_rock_band_Iris%2C_2010.jpg/220px-Romanian_rock_band_Iris%2C_2010.jpg",
+      "img": "https://static4.libertatea.ro/wp-content/uploads/2018/10/minculescu-si-iris-1-620x376.jpg",
       "officialYoutube": "https://www.youtube.com/channel/UC9B5eozl9BM6IxV3tWMZRhQ",
-      "type": "Formatie",
+      "type": "Formație",
       "": "În activitate",
       "yearsOfActivity": "1975 - prezent",
       "albums": [
@@ -82,7 +82,7 @@
       "name": "Akcent",
       "img": "https://www.cotidianul.ro/wp-content/uploads/2018/01/14/1274101005ackent-1000x600.jpg",
       "officialYoutube": "https://www.youtube.com/channel/UCQyFhLHHNC4QLaqMAE0ZB9w",
-      "type": "Formatie",
+      "type": "Formație",
       "yearsOfActivity": "1998 - prezent",
       "albums": [
         {
@@ -105,7 +105,7 @@
       "name": "Getto Daci",
       "img": "https://i.ytimg.com/vi/9WkTnQ-uwP0/hqdefault.jpg",
       "officialYoutube": "-",
-      "type": "Formatie",
+      "type": "Formație",
       "yearsOfActivity": "1994 - 2000",
       "albums": [
         {
@@ -147,6 +147,16 @@
       "singles": [],
       "id": 3,
       "activity": "1995 - prezent"
+    },
+    {
+      "name": "BUG Mafia",
+      "img": "https://i.ytimg.com/vi/vsjPWWtV8zA/maxresdefault.jpg",
+      "officialYoutube": "",
+      "type": "Formație",
+      "yearsOfActivity": "1995 - prezent",
+      "albums": [],
+      "singles": [],
+      "id": 4
     }
   ],
   "jazz-artists": [
@@ -175,7 +185,7 @@
   "techno-artists": [
     {
       "id": 1,
-      "name": "Nu Zau",
+      "name": "Nu Zău",
       "img": "https://www.electronicbeats.net/app/uploads/sites/9/2019/07/nu-zau-2017-07-1038x584.png",
       "officialYoutube": "https://www.youtube.com/channel/UCz0MCxVFZB2Z1SUouG3aqpw",
       "type": "Artist individual",
@@ -196,7 +206,7 @@
       "name": "El Negro",
       "img": "https://static.infomusic.ro/media/2015/04/Bogdan-El-Negro-800x450.jpg",
       "officialYoutube": "https://www.youtube.com/user/elnegroromania",
-      "type": "Formatie",
+      "type": "Formație",
       "yearsOfActivity": "1999 - prezent",
       "albums": [
         {
@@ -211,10 +221,10 @@
   "trap-artists": [
     {
       "id": 1,
-      "name": "Satra Benz",
+      "name": "Șatra Benz",
       "img": "https://i.ytimg.com/vi/uNdjDZYpiDg/maxresdefault.jpg",
       "officialYoutube": "https://www.youtube.com/channel/UCq4ei2v3wm3Q6IDYJ8pmSFw",
-      "type": "Formatie",
+      "type": "Formație",
       "yearsOfActivity": "2012 - prezent",
       "albums": [
         {
