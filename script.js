@@ -347,15 +347,25 @@ function editArtist(typeArtist, artist) {
     let labelActivity = getLabel('time', 'Perioadă de activitate');
     let formActivity = getInput('time', 'formActivity', artist.yearsOfActivity);
 
+    labelName.className = 'details_text';
+    labelYt.className = 'details_text';
+    labelActivity.className = 'details_text';
+    labelImg.className = 'details_text';
+
+    formName.className = 'add_form';
+    formImg.className = 'add_form';
+    formYt.className = 'add_form';
+    formActivity.className = 'add_form';
+
     let addAlbumButton = document.createElement('button');
-    addAlbumButton.className = 'button';
+    addAlbumButton.className = 'edit_menu_button';
     addAlbumButton.addEventListener('click', () => {
         if (adminCheck())
             displayAddAlbumMenu(typeArtist, artist);
     });
     addAlbumButton.innerText = 'Adaugă album';
     let addSingleButton = document.createElement('button');
-    addSingleButton.className = 'button';
+    addSingleButton.className = 'edit_menu_button';
     addSingleButton.addEventListener('click', () => {
         if (adminCheck())
             displayAddSingleMenu(typeArtist, artist);
@@ -363,22 +373,39 @@ function editArtist(typeArtist, artist) {
     addSingleButton.innerText = 'Adaugă single';
 
     let container = document.createElement('div');
-    container.className = 'artist_details';
+    container.className = 'add_menu';
     container.id = 'display_menu';
 
-    container.appendChild(labelName);
-    container.appendChild(formName);
-    container.appendChild(labelImg);
-    container.appendChild(formImg);
-    container.appendChild(labelYt);
-    container.appendChild(formYt);
-    container.appendChild(labelActivity);
-    container.appendChild(formActivity);
+    let containerName = document.createElement('div');
+    let containerImg = document.createElement('div');
+    let containerYt = document.createElement('div');
+    let containerActivity = document.createElement('div');
+
+    containerName.appendChild(labelName);
+    containerName.appendChild(formName);
+
+    containerImg.appendChild(labelImg);
+    containerImg.appendChild(formImg);
+
+    containerYt.appendChild(labelYt);
+    containerYt.appendChild(formYt);
+
+    containerActivity.appendChild(labelActivity);
+    containerActivity.appendChild(formActivity);
+
+    let containerInfo = document.createElement('div');
+    containerImg.className = 'add_info_container';
+    containerInfo.appendChild(containerName);
+    containerInfo.appendChild(containerImg);
+    containerInfo.appendChild(containerActivity);
+    containerInfo.appendChild(containerYt);
+
+    container.appendChild(containerInfo);
     container.appendChild(addAlbumButton);
     container.appendChild(addSingleButton);
 
     let updateButton = document.createElement('button');
-    updateButton.className = 'button';
+    updateButton.className = 'edit_menu_button';
     updateButton.addEventListener('click', () => {
         postArtist(typeArtist);
         clearAddMenu(typeArtist);
@@ -387,7 +414,7 @@ function editArtist(typeArtist, artist) {
     updateButton.id = 'update-button'
 
     let cancelButton = document.createElement('button');
-    cancelButton.className = 'button';
+    cancelButton.className = 'edit_menu_button';
     cancelButton.addEventListener('click', () => {
         clearAddMenu(typeArtist);
     });
@@ -475,18 +502,36 @@ function displayAddAlbumMenu(typeArtist, artist) {
     let labelRelease = getLabel('release', 'Anul lansării: ');
     let formRelease = getInput('release', 'formRelease', '');
 
-    let container = document.createElement('div');
-    container.className = 'artist_details';
+    labelName.className = 'details_text';
+    labelRelease.className = 'details_text';
+    labelNoSongs.className = 'details_text';
 
-    container.appendChild(labelName);
-    container.appendChild(formName);
-    container.appendChild(labelNoSongs);
-    container.appendChild(formNoSongs);
-    container.appendChild(labelRelease);
-    container.appendChild(formRelease);
+    formName.className = 'add_form';
+    formRelease.className = 'add_form';
+    formNoSongs.className = 'add_form';
+    
+    let container = document.createElement('div');
+    container.className = 'add_menu';
+
+    let nameContainer = document.createElement('div');
+    let noSongsContainer = document.createElement('div');
+    let relreaseContainer = document.createElement('div');
+
+    nameContainer.appendChild(labelName);
+    nameContainer.appendChild(formName);
+
+    noSongsContainer.appendChild(labelNoSongs);
+    noSongsContainer.appendChild(formNoSongs);
+
+    relreaseContainer.appendChild(labelRelease);
+    relreaseContainer.appendChild(formRelease);
+
+    container.appendChild(nameContainer);
+    container.appendChild(noSongsContainer);
+    container.appendChild(relreaseContainer);
 
     let updateButton = document.createElement('button');
-    updateButton.className = 'button';
+    updateButton.className = 'add_album_button';
     updateButton.addEventListener('click', () => {
         postAlbum(typeArtist, artist);
         clearAddMenu(typeArtist);
@@ -495,7 +540,7 @@ function displayAddAlbumMenu(typeArtist, artist) {
     updateButton.id = 'update-button';
 
     let cancelButton = document.createElement('button');
-    cancelButton.className = 'button';
+    cancelButton.className = 'add_album_button';
     cancelButton.addEventListener('click', () => {
         clearAddMenu(typeArtist);
     });
@@ -512,21 +557,34 @@ function displayAddAlbumMenu(typeArtist, artist) {
 }
 
 function displayAddSingleMenu(typeArtist, artist) {
-    let labelName = getLabel('name', 'Nume album: ');
+    let labelName = getLabel('name', 'Nume single: ');
     let formName = getInput('name', 'formName', '');
     let labelRelease = getLabel('release', 'Anul lansării: ');
     let formRelease = getInput('release', 'formRelease', '');
 
-    let container = document.createElement('div');
-    container.className = 'artist_details';
+    labelName.className = 'details_text';
+    labelRelease.className = 'details_text';
 
-    container.appendChild(labelName);
-    container.appendChild(formName);
-    container.appendChild(labelRelease);
-    container.appendChild(formRelease);
+    formName.className = 'add_form';
+    formRelease.className = 'add_form';
+
+    let container = document.createElement('div');
+    container.className = 'add_menu';
+
+    let nameContainer = document.createElement('div');
+    let relreaseContainer = document.createElement('div');
+
+    nameContainer.appendChild(labelName);
+    nameContainer.appendChild(formName);
+
+    relreaseContainer.appendChild(labelRelease);
+    relreaseContainer.appendChild(formRelease);
+
+    container.appendChild(nameContainer);
+    container.appendChild(relreaseContainer);
 
     let updateButton = document.createElement('button');
-    updateButton.className = 'button';
+    updateButton.className = 'add_album_button';
     updateButton.addEventListener('click', () => {
         postSingle(typeArtist, artist);
         clearAddMenu(typeArtist);
@@ -535,7 +593,7 @@ function displayAddSingleMenu(typeArtist, artist) {
     updateButton.id = 'button-menu';
 
     let cancelButton = document.createElement('button');
-    cancelButton.className = 'button';
+    cancelButton.className = 'add_album_button';
     cancelButton.addEventListener('click', () => {
         clearAddMenu(typeArtist);
     });
@@ -598,30 +656,60 @@ function displayAddMenu(typeArtist) {
     let labelActivity = getLabel('time', 'Perioadă de activitate');
     let formActivity = getInput('time', 'formActivity', '');
 
+    labelName.className = 'details_text';
+    labelYt.className = 'details_text';
+    labelActivity.className = 'details_text';
+    labelImg.className = 'details_text';
+
+    formName.className = 'add_form';
+    formImg.className = 'add_form';
+    formYt.className = 'add_form';
+    formActivity.className = 'add_form';
+
     let individulLabel = getLabel('individual', 'Individual');
     let individual = getCheckbox('individual');
     let formatieLabel = getLabel('formatie', 'Formație');
     let formatie = getCheckbox('formatie');
 
+    individulLabel.className = 'details_text';
+    formatieLabel.className = 'details_text';
+
     let container = document.createElement('div');
-    container.className = 'artist_details';
+    container.className = 'add_menu';
     container.id = 'display_menu';
 
-    container.appendChild(labelName);
-    container.appendChild(formName);
-    container.appendChild(labelImg);
-    container.appendChild(formImg);
-    container.appendChild(labelYt);
-    container.appendChild(formYt);
-    container.appendChild(labelActivity);
-    container.appendChild(formActivity);
+    let containerName = document.createElement('div');
+    let containerImg = document.createElement('div');
+    let containerYt = document.createElement('div');
+    let containerActivity = document.createElement('div');
+
+    containerName.appendChild(labelName);
+    containerName.appendChild(formName);
+
+    containerImg.appendChild(labelImg);
+    containerImg.appendChild(formImg);
+
+    containerYt.appendChild(labelYt);
+    containerYt.appendChild(formYt);
+
+    containerActivity.appendChild(labelActivity);
+    containerActivity.appendChild(formActivity);
+
+    let containerInfo = document.createElement('div');
+    containerImg.className = 'add_info_container';
+    containerInfo.appendChild(containerName);
+    containerInfo.appendChild(containerImg);
+    containerInfo.appendChild(containerActivity);
+    containerInfo.appendChild(containerYt);
+
+    container.appendChild(containerInfo);
     container.appendChild(individulLabel)
     container.appendChild(individual);
     container.appendChild(formatieLabel);
     container.appendChild(formatie);
 
     let updateButton = document.createElement('button');
-    updateButton.className = 'button';
+    updateButton.className = 'add_menu_button';
     updateButton.addEventListener('click', () => {
         postArtist(typeArtist);
         clearAddMenu(typeArtist);
@@ -630,7 +718,7 @@ function displayAddMenu(typeArtist) {
     updateButton.id = 'update-button'
 
     let cancelButton = document.createElement('button');
-    cancelButton.className = 'button';
+    cancelButton.className = 'add_menu_button';
     cancelButton.addEventListener('click', () => {
         clearAddMenu(typeArtist);
     });

@@ -286,6 +286,43 @@ footer {
     justify-content: space-around;
 }
 
+.add_menu {
+    background-color: #231F20;
+    width: 700px;
+    height: max-content;
+    line-height: 80px;
+    border: solid white;
+}
+
+.add_form {
+    margin-left: 20px;
+}
+
+.add_menu_button {
+	background-color: #231F20;
+	color: whitesmoke;
+	width: 100px;
+	height: 50px;
+	margin-left: 100px;
+}
+
+.edit_menu_button {
+	background-color: #231F20;
+	color: whitesmoke;
+	width: 110px;
+	height: 50px;
+	margin-left: 50px;
+	padding: 0px;
+}
+
+.add_album_button {
+    background-color: #231F20;
+	color: whitesmoke;
+	width: 100px;
+	height: 50px;
+	margin-left: 165px;
+}
+
 @media (max-width: 1280px) {
     .artist-img {
         width: 150px;
