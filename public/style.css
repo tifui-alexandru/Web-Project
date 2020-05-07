@@ -1,7 +1,7 @@
 /* change colours */
 
 body {
-    background: url("images/background.jpg");
+    background: url("../images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
@@ -27,6 +27,7 @@ body {
 }
 
 .header_button {
+    cursor: pointer;
 	background-color: darkslategray;
 	color: whitesmoke;
 	border-radius: 5rem;
@@ -80,6 +81,7 @@ footer {
 }
 
 .artist-button {
+    cursor: pointer;
     height: 250px;
     width: 250px;
     background-color: #1b1711f1;
@@ -188,16 +190,19 @@ footer {
 }
 
 .button {
+    cursor: pointer;
     background-color: #231F20;
     color: whitesmoke;
     border-radius: 5rem;
 }
 
 .add_band_button-container {
+    cursor: pointer;
     margin-left: 500px;
 }
 
 .add_band_button-container :first-child {
+    cursor: pointer;
     height: 50px;
     width: 250px;
     font-size: 25px;
@@ -213,6 +218,7 @@ footer {
 }
 
 .container_formation .button {
+    cursor: pointer;
     border-radius: 0px;
     height: 60px;
     width: 200px;
@@ -284,6 +290,7 @@ footer {
 }
 
 .back_button {
+    cursor: pointer;
     background: darkslategray;
     color: white;
     border: solid;
@@ -312,6 +319,7 @@ footer {
 }
 
 .add_menu_button {
+    cursor: pointer;
 	background-color: #231F20;
 	color: whitesmoke;
 	width: 100px;
@@ -320,6 +328,7 @@ footer {
 }
 
 .edit_menu_button {
+    cursor: pointer;
 	background-color: #231F20;
 	color: whitesmoke;
 	width: 110px;
@@ -329,6 +338,7 @@ footer {
 }
 
 .add_album_button {
+    cursor: pointer;
     background-color: #231F20;
 	color: whitesmoke;
 	width: 100px;
