@@ -57,6 +57,10 @@
         margin-left: 4px;
     }
     
+    main.content {
+        flex-direction: column;
+    }
+
     .add_band_button-container {
         margin-left: 0px;
         margin-right: 0px;
@@ -65,53 +69,60 @@
 
     .add_band_button-container :first-child {
         width: 150px;
-        font-size: 17px;
+        font-size: 15px;
+    }
+    
+    .details-photo-and-info {
+        flex-direction: column;
     }
     
     .artist_details {
-        width: 700px;
+        width: 336px;
     }
 
     .formation_name_details {
         display: block;
-        width: 700px;
+        width: 336px;
         height: 50px;
         line-height: 50px;
     }
+    
+    .formation_name {
+        width: 336px;
+        height: 45px;
+        font-size: 20px;
+        line-height: 45px;
+    }
+
+    .formation_image {
+        width: 240px;
+        height: 135px;
+    }
+    
+    .container_formation .button {
+        height: 45px;
+        width: 96px;
+    }
 
     .formation_image_details {
-        width: 368px;
-        height: 207px;
+        width: 336px;
+        height: 189px;
     }
     
     .back_button {
-        width: 332px;
-        margin-top: 10px;
+        width: 336px;
     }
     
-    .details-photo-and-info {
-        font-size: 17px;
-    }
-
-    .details_text {
-        color: whitesmoke;
-        line-height: 1;
-        margin-left: 20px;
-    }
-
-    .info_text {
-        margin-top: 35px;
+    .discography {
+        flex-direction: column;
     }
     
-    .album_name {
-        font-size: 25px;
+    .album_container {
+        width: 317px;
     }
     
-    .album {
-        font-size: 15px;
-    }
-    
-    .single {
-        font-size: 15px;
+    .single_container {
+        width: 317px;
+        margin-bottom: 0px;
     }
 }

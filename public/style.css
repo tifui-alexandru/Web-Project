@@ -135,6 +135,8 @@ footer {
 
 .content-subtitle-text {
     text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .content-message {
