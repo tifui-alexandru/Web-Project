@@ -69,7 +69,7 @@ footer {
 .content {
     line-height: 200px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -148,7 +148,7 @@ footer {
     width: max-content;
     padding: 1px;
     margin-bottom: 20px;
-    margin-left: -100px;
+    margin-left: 0px;
     border-radius: 40%;
     margin-bottom: 50px;
     padding: 10px;
@@ -219,7 +219,6 @@ footer {
 
 .add_band_button-container {
     cursor: pointer;
-    margin-left: 500px;
 }
 
 .add_band_button-container :first-child {
