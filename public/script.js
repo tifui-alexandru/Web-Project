@@ -1,43 +1,33 @@
 const musicTypeArray = ['rock', 'pop', 'disco', 'rap', 'jazz', 'techno', 'raggae', 'trap', 'lautareasca', 'populara'];
 const musicTypeDict = {
     rock: {
-        element: document.getElementById('rock'),
         localHost: 'http://localhost:3000/rock-artists'
     },
     pop: {
-        element: document.getElementById('pop'),
         localHost: 'http://localhost:3000/pop-artists'
     },
     disco: {
-        element: document.getElementById('disco'),
         localHost: 'http://localhost:3000/disco-artists'
     },
     rap: {
-        element: document.getElementById('rap'),
         localHost: 'http://localhost:3000/rap-artists'
     },
     jazz: {
-        element: document.getElementById('jazz'),
         localHost: 'http://localhost:3000/jazz-artists'
     },
     techno: {
-        element: document.getElementById('techno'),
         localHost:'http://localhost:3000/techno-artists'
     },
     raggae: {
-        element: document.getElementById('raggae'),
         localHost: 'http://localhost:3000/raggae-artists'
     },
     trap: {
-        element: document.getElementById('trap'),
         localHost: 'http://localhost:3000/trap-artists'
     },
     lautareasca: {
-        element: document.getElementById('lautareasca'),
         localHost: 'http://localhost:3000/lautareasca-artists'
     },
     populara: {
-        element: document.getElementById('populara'),
         localHost: 'http://localhost:3000/populara-artists'
     }
 };
@@ -54,13 +44,6 @@ function getArtists(typeArtist) {
 
 function deleteArtist(typeArtist, id) {
     artistLocalHost = musicTypeDict[typeArtist].localHost;
-    // fetch(artistLocalHost + '/' + id, {
-    //     method: 'DELETE',
-    // }).then(response => {
-    //     response.json().then(artists => {
-    //         getArtists(typeArtist);
-    //     })
-    // });
     fetch(artistLocalHost + '/' + id, {
         method: 'DELETE',
     });
@@ -99,16 +82,6 @@ function postArtist(typeArtist) {
     });
 
     getArtists(typeArtist);
-
-    // fetch(artistLocalHost, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(postObject)
-    // }).then(() => {
-    //     getArtists(typeArtist);
-    // });
 }
 
 function updateArtist(typeArtist, putObject) {
@@ -204,6 +177,7 @@ function clearArtists(typeArtist) {
 function startWebPage() {
     for (let i = 0; i < musicTypeArray.length; ++i) {
         let elem = document.getElementById(musicTypeArray[i] + "_button");
+        musicTypeDict[musicTypeArray[i]].element = document.getElementById(musicTypeArray[i]);
         elem.addEventListener('click', () => {
             updateMain(musicTypeArray[i]);
             getArtists(musicTypeArray[i]);
@@ -213,10 +187,9 @@ function startWebPage() {
 
 homeButton = document.getElementById('home-button');
 homeButton.addEventListener('click', () => {
-    // let mainPage = document.getElementById('main_container');
-    // mainPage.innerHTML = mainPageHTML;
-    // startWebPage();
-    location.href = 'http://localhost:3000';
+    let mainPage = document.getElementById('main_container');
+    mainPage.innerHTML = mainPageHTML;
+    startWebPage();
 });
 
 function timeSpentOnSite() {
