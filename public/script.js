@@ -42,11 +42,9 @@ const musicTypeDict = {
     }
 };
 
-mainTag = document.getElementsByTagName('main');
-asideTag = document.getElementsByTagName('aside');
-
 function getArtists(typeArtist) {
     artistLocalHost = musicTypeDict[typeArtist].localHost;
+    
     fetch(artistLocalHost).then(response => {
         response.json().then(artists => {
             appendArtistsToDOM(artists, typeArtist);
@@ -133,10 +131,9 @@ function updateArtist(typeArtist, putObject) {
         body: JSON.stringify(putObject)
     });
     clearAddMenu(typeArtist);
-    getArtists(typeArtist);
 }
 
-function postAlbum(typeArtist, artist) {
+function addAlbum(typeArtist, artist) {
     artistLocalHost = musicTypeDict[typeArtist].localHost;
 
     let formName = document.getElementById('formName');
@@ -159,11 +156,9 @@ function postAlbum(typeArtist, artist) {
         },
         body: JSON.stringify(putObject)
     });
-    clearAddMenu(typeArtist);
-    getArtists(typeArtist);
 }  
 
-function postSingle(typeArtist, artist) {
+function addSingle(typeArtist, artist) {
     artistLocalHost = musicTypeDict[typeArtist].localHost;
 
     let formName = document.getElementById('formName');
@@ -184,8 +179,6 @@ function postSingle(typeArtist, artist) {
         },
         body: JSON.stringify(putObject)
     });
-    clearAddMenu(typeArtist);
-    getArtists(typeArtist);
 }
 
 function displayDetalis(typeArtist, id) {
@@ -220,7 +213,36 @@ function startWebPage() {
 
 homeButton = document.getElementById('home-button');
 homeButton.addEventListener('click', () => {
+    // let mainPage = document.getElementById('main_container');
+    // mainPage.innerHTML = mainPageHTML;
+    // startWebPage();
     location.href = 'http://localhost:3000';
 });
+
+function timeSpentOnSite() {
+    let ans = parseInt(localStorage.getItem('timeSpentOnSite'));
+    if (isNaN(ans)) ans = 0;
+    return ans;
+}
+
+if (typeof(Storage) !== 'undefined') {
+    let start = Date.now();
+    let footer = document.getElementById('response');
+
+    let timer = setInterval(() => {
+        let time = timeSpentOnSite() + (Date.now() - start);
+        localStorage.setItem('timeSpentOnSite', time);
+        start = parseInt(Date.now());
+
+        let minutes = parseInt(time / 60000);
+        let seconds = parseInt(time / 1000) - minutes * 60;
+
+        footer.innerText = 'Ai petrecut în total: ' + minutes + ' minute și ' + seconds + ' secunde pe pagină';
+    }, 1000);
+}
+else
+    document.getElementById('response').innerText = 'No Local Storage support';
+
+let mainPageHTML = document.getElementById('main_container').innerHTML;
 
 startWebPage();

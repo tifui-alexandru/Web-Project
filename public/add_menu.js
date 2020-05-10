@@ -104,6 +104,8 @@ function displayAddMenu(typeArtist) {
     container.appendChild(updateButton);
     container.appendChild(cancelButton);
 
+    mainTag = document.getElementsByTagName('main');
+
     while (mainTag[0].firstChild)
         mainTag[0].removeChild(mainTag[0].firstChild);
     mainTag[0].appendChild(container);
@@ -112,6 +114,8 @@ function displayAddMenu(typeArtist) {
 }
 
 function clearAddMenu(typeArtist) {
+    mainTag = document.getElementsByTagName('main');
+
     while (mainTag[0].firstChild)
         mainTag[0].removeChild(mainTag[0].firstChild);
     updateMain(typeArtist);

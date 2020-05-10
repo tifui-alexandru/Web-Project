@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tablet_style.css">
+    <link rel="stylesheet" href="phone_style.css">
     <title>RO Music Catalog</title>
 </head>
 
 <body>
     <div class="page-container" id="page-container">
         <header class="header-and-footer">
-             <button type="button" class="header_button" id="home-button">Acasă</button>
+            <button type="button" class="header_button" id="home-button">Acasă</button>
             <p class="header_text">Catalogul tău online de muzică românească</p>
+            <button type="button" class="hidden_button"></button>
         </header>
         <div class="main_container" id="main_container">
             <div class="content-subtitle" id="subtitle">
@@ -42,7 +45,7 @@
                         <img class="artist-img " src="../images/johnny_raducanu.jpg " alt="Johnny Răducanu">
                     </nav>
                 </article>
-                <article class="content-right">
+                <article class="right-content">
                     <nav class="artist ">
                         <img class="artist-img " src="../images/NU_ZAU.jpg " alt="Nu Zău">
                         <button id="techno_button" class="artist-button " type="button ">Techno</button>
@@ -80,16 +83,17 @@
             </aside>
         </div>
         <footer class="header-and-footer ">
-            <p>Autor: Alexandru Țifui</p>
+            <p class="response">Autor: Alexandru Țifui</p>
+            <p class="response", id="response"></p>
         </footer>
     </div>
     <script type="text/javascript" src="script.js "></script>
-    <script type="text/javascript" src="addmenu.js"></script>
-    <script type="text/javascript" src="addalbummenu.js"></script>
-    <script type="text/javascript" src="addsinglemenu.js"></script>
-    <script type="text/javascript" src="appendDOM.js"></script>
+    <script type="text/javascript" src="add_menu.js"></script>
+    <script type="text/javascript" src="add_album_menu.js"></script>
+    <script type="text/javascript" src="add_single_menu.js"></script>
+    <script type="text/javascript" src="append_DOM.js"></script>
     <script type="text/javascript" src="edit.js"></script>
-    <script type="text/javascript" src="updatemain.js"></script>
+    <script type="text/javascript" src="update_main.js"></script>
 </body>
 
 </html>

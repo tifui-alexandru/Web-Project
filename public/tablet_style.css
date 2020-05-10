@@ -1,0 +1,124 @@
+@media (max-width: 1280px) {
+    .artist-img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .artist-button {
+        height: 150px;
+        width: 150px;
+    }
+
+    .artist {
+        margin: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    header {
+        margin-top: -60px;
+    }
+    
+    footer {
+        margin-bottom: -40px;
+    }
+    
+    .header_text {
+        font-size: 17px;
+    }
+    
+    .header_button {
+        width: 100px;
+        height: 40px;
+        margin-top: 8px;
+        margin-left: 5px;
+    }
+    
+    .hidden_button {
+        width: 100px;
+        height: 40px;
+    }
+    
+    .content-subtitle {
+        font-size: 20px;
+        width: 30%;
+        padding: 1px;
+        margin-bottom: 20px;
+        margin-left: 150px;
+        border-radius: 40%;
+        margin-bottom: 50px;
+    }
+    
+    .content-subtitle-text {
+        margin-left: 30px;
+    }
+    
+    .artist {
+        margin-left: 83%;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .content-message {
+        font-size: 17px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    
+    .add_band_button-container {
+        margin-left: 100px;
+        margin-right: -95px;
+    }
+
+    .add_band_button-container :first-child {
+        width: 150px;
+        font-size: 17px;
+    }
+    
+    .artist_details {
+        width: 700px;
+    }
+
+    .formation_name_details {
+        display: block;
+        width: 700px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .formation_image_details {
+        width: 368px;
+        height: 207px;
+    }
+    
+    .back_button {
+        width: 332px;
+        margin-top: 10px;
+    }
+    
+    .details-photo-and-info {
+        font-size: 17px;
+    }
+
+    .details_text {
+        color: whitesmoke;
+        line-height: 1;
+        margin-left: 20px;
+    }
+
+    .info_text {
+        margin-top: 35px;
+    }
+    
+    .album_name {
+        font-size: 25px;
+    }
+    
+    .album {
+        font-size: 15px;
+    }
+    
+    .single {
+        font-size: 15px;
+    }
+}

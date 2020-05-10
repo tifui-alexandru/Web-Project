@@ -53,6 +53,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         
         artistsElement.appendChild(biggerContainer);
     }
+    // console.log(artistsElement);
 }
 
 function appendDetailsToDOM(typeArtist, artist) {
@@ -75,6 +76,8 @@ function appendDetailsToDOM(typeArtist, artist) {
     activity.className = 'details_text';
 
     let ytLink = document.createElement('a');
+    ytLink.target = '_blank';
+    ytLink.rel = 'noopener noreferrer';
     ytLink.innerText = 'Link către canalul de Youtube';
     ytLink.href = artist.officialYoutube;
     ytLink.className = 'details_text';
@@ -161,6 +164,8 @@ function appendDetailsToDOM(typeArtist, artist) {
     discography.appendChild(singles);
 
     artistDetails.appendChild(discography);
+
+    mainTag = document.getElementsByTagName('main');
 
     while (mainTag[0].firstChild)
         mainTag[0].removeChild(mainTag[0].firstChild);

@@ -49,7 +49,7 @@ function editArtist(typeArtist, artist) {
     containerYt.appendChild(labelYt);
     containerYt.appendChild(formYt);
 
-    containerActivity.appendChild(labelActivity);
+    containerActivity.appendChild(labelActivity);mainTag
     containerActivity.appendChild(formActivity);
 
     let containerInfo = document.createElement('div');
@@ -81,6 +81,8 @@ function editArtist(typeArtist, artist) {
 
     container.appendChild(updateButton);
     container.appendChild(cancelButton);
+
+    mainTag = document.getElementsByTagName('main');
 
     while (mainTag[0].firstChild)
         mainTag[0].removeChild(mainTag[0].firstChild);
