@@ -58,7 +58,7 @@ function postArtist(typeArtist) {
     let formYt = document.getElementById('formYt');
     let formActivity = document.getElementById('formActivity');
 
-    let formType = 'Individual';
+    let formType = 'Artist individual';
     if (document.getElementById('formatie').checked)
         formType = 'Formație';
 
@@ -93,7 +93,7 @@ function updateArtist(typeArtist, putObject) {
     formYt = document.getElementById('formYt').value;
     if (formName) putObject.name = formName;
     if (formImg) putObject.img = formImg;
-    if (formActivity) putObject.activity = formActivity;
+    if (formActivity) putObject.yearsOfActivity = formActivity;
     if (formYt) putObject.officialYoutube = formYt;
 
     fetch(artistLocalHost + '/' + putObject.id, {
