@@ -125,10 +125,6 @@ for (let i = 0; i < typeArtistArray.length; ++i) {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.get('/', (req, res) => {
-    res.redirect('index.html');
-});
-
 app.listen("3000", () =>
   console.log("Server started at: http://localhost:3000")
 );
