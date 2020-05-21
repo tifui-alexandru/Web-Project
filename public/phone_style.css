@@ -125,4 +125,26 @@
         width: 317px;
         margin-bottom: 0px;
     }
+
+    .add_menu {
+        width: 280px;
+    }
+
+    .add_menu_button {
+        width: 200px;
+        margin: 0px;
+        margin-left: 40px;
+    }
+
+    .edit_menu_button {
+        width: 200px;
+        margin: 0px;
+        margin-left: 40px;
+    }
+
+    .add_album_button {
+        width: 200px;
+        margin: 0px;
+        margin-left: 40px;
+    }
 }
