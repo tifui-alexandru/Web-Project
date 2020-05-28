@@ -16,6 +16,10 @@ function updateMain(typeArtist) {
     if (subtitle)
         subtitle.parentNode.removeChild(subtitle);
 
+    let profile = document.getElementById('profile_container');
+    if (profile)
+        profile.parentNode.removeChild(profile);
+
     let textContainer = document.createElement('div');
     textContainer.className = 'content-message';
     let text = document.createElement('span');

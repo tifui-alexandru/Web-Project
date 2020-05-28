@@ -16,11 +16,17 @@
         <nav class="header-and-footer">
             <button type="button" class="header_button" id="home-button">Acasă</button>
             <p class="header_text">Catalogul tău online de muzică românească</p>
-            <button type="button" class="hidden_button"></button>
+            <button type="button" class="header_button" id="login-button">Autentificare</button>
         </nav>
         <div class="main_container" id="main_container">
-            <div class="content-subtitle" id="subtitle">
-                <p class="content-subtitle-text">Alege unul dintre următoarele genuri muzicale:</p>
+            <div class="subttitle-delimitator">
+                <div class="content-subtitle" id="subtitle">
+                    <p class="content-subtitle-text">Alege unul dintre următoarele genuri muzicale:</p>
+                </div>
+                <div class="present-on-all-pages" id="profile_container">
+                    <button class="profile-shortcut" id="go_to_profile">Profilul meu</button>
+                    <button class="users-button" id="users_button">Vezi ce utilizatori mai sunt conectati</button>
+                </div>
             </div>
             <main class="content">
                 <article class="left-content">
@@ -94,6 +100,9 @@
     <script type="text/javascript" src="append_DOM.js"></script>
     <script type="text/javascript" src="edit.js"></script>
     <script type="text/javascript" src="update_main.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+    <script type="text/javascript" src="register.js"></script>
+    <script type="text/javascript" src="profile.js"></script>
 </body>
 
 </html>

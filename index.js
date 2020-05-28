@@ -5,6 +5,8 @@ const cors = require('cors');
 const uuidv1 = require('uuid/v1');
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const typeArtistArray = ['rock-artists', 'pop-artists', 'disco-artists', 'rap-artists', 'jazz-artists', 
                          'techno-artists', 'raggae-artists', 'trap-artists', 'lautareasca-artists', 'populara-artists'];
@@ -14,6 +16,7 @@ const app = express();
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.json());
 
 function create(typeArtist) {
     app.post('/' + typeArtist, (req, res) => {
@@ -121,6 +124,59 @@ for (let i = 0; i < typeArtistArray.length; ++i) {
     update(typeArtistArray[i]);
     deleteContent(typeArtistArray[i]);
 }
+
+// login stuff
+
+const users = [];
+
+function getUsers() {
+    app.get('/users', (req, res) => {
+        res.json(users);
+    });
+}
+
+function registerUser() {
+    app.post('/users', async (req, res) => {
+        try {
+            let pass = req.body.password;
+            let salt = await bcrypt.genSalt();
+            let hashedPassword = await bcrypt.hash(pass, salt);
+
+            let user = { username: req.body.username, password: hashedPassword };
+            users.push(user);
+
+            res.status(201).send();
+        }
+        catch {
+            res.status(500).send();
+        }
+    });
+}
+
+function loginUser() {
+    app.post('/users/login', async (req, res) => {
+        let user = users.find(user => user.username == req.body.username);
+
+        if (user) {
+            try {
+                if ( await bcrypt.compare(req.body.password, user.password))
+                    res.send('Loged in');
+                else
+                    res.send('Loging failed');
+            }
+            catch {
+                res.status(500).send();
+            }
+        }
+        else {
+            res.status(400).send('User could not be found');
+        }
+    });
+}
+
+getUsers();
+registerUser();
+loginUser();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));

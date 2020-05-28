@@ -219,3 +219,9 @@ else
 let mainPageHTML = document.getElementById('main_container').innerHTML;
 
 startWebPage();
+
+function clearAllArtists() {
+    for (let i = 0; i < musicTypeArray.length; ++i) {
+        clearArtists(musicTypeArray[i])
+    }
+}
