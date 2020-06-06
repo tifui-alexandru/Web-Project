@@ -155,6 +155,27 @@ app.get('/users', (req, res) => {
     res.json(users);
 });
 
+// get the user I have access to
+app.get('/posts', authenticateToken, (req, res) => {
+    const users = readJSONUsers()['users'];
+    res.json(users.filter(user => user.username == req.user.username));
+});
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (token == null)
+        return res.sendStatus(401);
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403);
+
+        req.user = user;
+        next();
+    });
+}
+
 // register user
 // to do: verify if username is already used
 app.post('/users', async (req, res) => {
@@ -197,10 +218,6 @@ app.post('/users/login', async (req, res) => {
         res.status(500).send();
     }
 });
-
-app.get('/posts') {
-    
-}
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));

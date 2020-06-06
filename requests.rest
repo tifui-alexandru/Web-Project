@@ -1,5 +1,4 @@
 GET http://localhost:3000/users
-
 ###
 
 POST http://localhost:3000/users
@@ -18,3 +17,7 @@ Content-Type: application/json
     "username": "User1",
     "password": "password"
 }
+
+###
+GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlVzZXIxIiwicGFzc3dvcmQiOiIkMmIkMTAkWkxzaW1jdFFNSjJqcDVEQjZjRUpaLjNUSlY2M1dYRUNoYjBCM2RidnNidkYuOE5aeWVBcG0iLCJpYXQiOjE1OTE0NTYzODh9.a4h4jJvAltgUP7z8usl-1Yhi4AlT7esK7colGmzKR8c
