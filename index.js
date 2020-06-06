@@ -150,15 +150,16 @@ function writeJSONUsers(content) {
 }
 
 // read all users
-app.get('/users', (req, res) => {
-    const users = readJSONUsers();
-    res.json(users);
-});
+// app.get('/users', (req, res) => {
+//     const users = readJSONUsers();
+//     res.json(users);
+// });
 
 // get the user I have access to
-app.get('/posts', authenticateToken, (req, res) => {
+app.get('/users', authenticateToken, (req, res) => {
     const users = readJSONUsers()['users'];
-    res.json(users.filter(user => user.username == req.user.username));
+    const retUser = users.find(user => user.username == req.user.username)['username'];
+    res.json(retUser);
 });
 
 function authenticateToken(req, res, next) {
@@ -197,6 +198,8 @@ app.post('/users', async (req, res) => {
     }
 });
 
+const refreshTokenList = [];
+
 // login user
 app.post('/users/login', async (req, res) => {
     // Authenticate User
@@ -208,8 +211,12 @@ app.post('/users/login', async (req, res) => {
 
     try {
         if (await bcrypt.compare(req.body.password, user.password)) {
-            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
-            res.json({ accessToken: accessToken })
+            const accessToken = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' });
+            const refreshToken = jwt.sign({ username: user.username }, process.env.REFRESH_TOKEN_SECRET);
+
+            refreshTokenList.push(refreshToken);
+
+            res.json({ accessToken: accessToken, refreshToken: refreshToken });
         }
         else 
             res.send('Wrong Password');
@@ -217,6 +224,24 @@ app.post('/users/login', async (req, res) => {
     catch {
         res.status(500).send();
     }
+});
+
+app.post('/token', (req, res) => {
+    const refreshToken = req.body.token;
+
+    if (refreshToken == null) res.sendStatus(401);
+    if (!refreshTokenList.includes(refreshToken)) res.sendStatus(403);
+
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403);
+        const accessToken = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' });
+        res.json({ accessToken: accessToken})
+    });
+});
+
+app.delete('/logout', (req, res) => {
+    refreshTokenList = refreshTokenList.filter(token => token != req.body.token);
+    res.sendStatus(204);
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
