@@ -428,3 +428,8 @@ footer {
     display: flex;
     justify-content: space-between;
 }
+
+.upload_img {
+    cursor: pointer;
+    width: 245px;
+}
