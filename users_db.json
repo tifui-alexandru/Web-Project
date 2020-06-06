@@ -1,0 +1,20 @@
+{
+	"users": [
+		{
+			"username": "Eu",
+			"password": "1234"
+		},
+		{
+			"username": "Tu",
+			"password": "$2b$10$eW3ukVork4l87QlaBqSY4ulSYgjOdBjmYEGuUO3rFqNf/mN48Bqxe"
+		},
+		{
+			"username": "Giani",
+			"password": "$2b$10$gH6Vtq6GAYqYOuBg2rjR7.naXXYqIl6bNuhb1ukc6ti3rJtGV6p/6"
+		},
+		{
+			"username": "User1",
+			"password": "$2b$10$ZLsimctQMJ2jp5DB6cEJZ.3TJV63WXEChb0B3dbvsbvF.8NZyeApm"
+		}
+	]
+}

@@ -4,9 +4,9 @@ GET http://localhost:3000/users
 
 POST http://localhost:3000/users
 Content-Type: application/json
-     
+
 {
-    "username": "Tu",
+    "username": "User1",
     "password": "password"
 }
 
@@ -15,6 +15,6 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
      
 {
-    "username": "Tu",
-    "password": "passwor"
+    "username": "User1",
+    "password": "password"
 }

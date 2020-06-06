@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -112,9 +114,14 @@ function readAllJSONFile() {
 }
 
 function writeJSONFile(content) {
-    fs.writeFileSync('db.json', JSON.stringify(content), 'utf8', err => {
-        if (err) console.log(err);
-    });
+    fs.writeFileSync('db.json',
+        JSON.stringify(content, null, '\t'),
+        'utf-8',
+        err => {
+            if (err) {
+                console.log(err)
+            }
+        });
 }
 
 for (let i = 0; i < typeArtistArray.length; ++i) {
@@ -127,56 +134,73 @@ for (let i = 0; i < typeArtistArray.length; ++i) {
 
 // login stuff
 
-const users = [];
-
-function getUsers() {
-    app.get('/users', (req, res) => {
-        res.json(users);
-    });
+function readJSONUsers() {
+    return JSON.parse(fs.readFileSync('users_db.json'));
 }
 
-function registerUser() {
-    app.post('/users', async (req, res) => {
-        try {
-            let pass = req.body.password;
-            let salt = await bcrypt.genSalt();
-            let hashedPassword = await bcrypt.hash(pass, salt);
-
-            let user = { username: req.body.username, password: hashedPassword };
-            users.push(user);
-
-            res.status(201).send();
-        }
-        catch {
-            res.status(500).send();
-        }
-    });
-}
-
-function loginUser() {
-    app.post('/users/login', async (req, res) => {
-        let user = users.find(user => user.username == req.body.username);
-
-        if (user) {
-            try {
-                if ( await bcrypt.compare(req.body.password, user.password))
-                    res.send('Loged in');
-                else
-                    res.send('Loging failed');
+function writeJSONUsers(content) {
+    fs.writeFileSync('users_db.json',
+        JSON.stringify(content, null, '\t'),
+        'utf-8',
+        err => {
+            if (err) {
+                console.log(err)
             }
-            catch {
-                res.status(500).send();
-            }
-        }
-        else {
-            res.status(400).send('User could not be found');
-        }
-    });
+        });
 }
 
-getUsers();
-registerUser();
-loginUser();
+// read all users
+app.get('/users', (req, res) => {
+    const users = readJSONUsers();
+    res.json(users);
+});
+
+// register user
+// to do: verify if username is already used
+app.post('/users', async (req, res) => {
+    try {
+        const usersList = readJSONUsers();
+
+        const pass = req.body.password;
+        const hashedPassword = await bcrypt.hash(pass, 10);
+        const user = { username: req.body.username, password: hashedPassword };
+
+        usersList['users'].push(user);
+
+        writeJSONUsers(usersList);
+
+        res.status(201).send();
+    }
+    catch {
+        res.status(500).send();
+    }
+});
+
+// login user
+app.post('/users/login', async (req, res) => {
+    // Authenticate User
+    const usersList = readJSONUsers();
+    const user = usersList['users'].find(user => user.username == req.body.username);
+
+    if (user == null)
+        return res.status(400).send('User not found');
+
+    try {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+            res.json({ accessToken: accessToken })
+        }
+        else 
+            res.send('Wrong Password');
+    } 
+    catch {
+        res.status(500).send();
+    }
+});
+
+app.get('/posts') {
+    
+}
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
