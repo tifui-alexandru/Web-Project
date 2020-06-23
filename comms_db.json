@@ -1,0 +1,209 @@
+{
+	"rock": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": 0,
+					"downVotes": 0
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": 0
+				}
+			]
+		},
+		{
+			"id": "2",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"pop": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "woqanvvvvvvvvvvererrrrrrrrrvjhb qpewveuvbqeibv90uqewc9vqwenvqewnv 298rh 8u3b u3fn9u23nv 8u23nv2 9423rn v9io29v0 n9urvn 9u2rvn 9uenrv 9ui23n 9vu03n 9uie4nr 9vunvu n9vu n9vr\nadd\nadqwe\ns",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"disco": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"rap": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"jazz": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"techno": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"raggae": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"trap": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"lautareasca": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	],
+	"populara": [
+		{
+			"id": "1",
+			"comms": [
+				{
+					"id": "1",
+					"text": "E bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				},
+				{
+					"id": "2",
+					"text": "Nu e bun",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
+		}
+	]
+}

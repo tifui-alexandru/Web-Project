@@ -9,27 +9,22 @@ function displayRegisterMenu() {
         let labelConfirmPassword = getLabel('confirmPassword', 'Confirmă parola: ');
         let labelEmail = getLabel('email', 'Adresă de email: ');
         let labelName = getLabel('name', 'Nume și prenume: ');
-        let labelImg = getLabel('img', 'Forografie de profil');
+        let labeladmin = getLabel('admin', 'Forografie de profil');
 
         let formUsername = getInput('username', 'formUsername', '');
         let formPassword = getInput('password', 'formPassword', '');
         let formConfirmPassword = getInput('confirmPassword', 'formConfirmPassword', '');
         let formEmail = getInput('email', 'formEmail', '');
         let formName = getInput('name', 'formName', '');
-        let formImg = document.createElement('input'); 
+        let formadmin = document.createElement('input'); 
 
-        formImg.type = 'file';
-        formImg.name = 'img';
-        formImg.style = 'display:none';
+        formadmin.type = 'file';
+        formadmin.name = 'admin';
+        formadmin.style = 'display:none';
         formEmail.type = 'email';
-        formImg.id = 'formImg';
-
-        let uploadButton = document.createElement('button');
-        uploadButton.className = 'upload_img';
-        uploadButton.innerText = 'Încarcă imaginea'
-        uploadButton.addEventListener('click', () => {
-            formImg.click();
-        });
+        formadmin.id = 'formadmin';
+        formPassword.type = 'password';
+        formConfirmPassword.type = 'password';
     
     
         labelUsername.className = 'details_text';
@@ -37,7 +32,7 @@ function displayRegisterMenu() {
         labelConfirmPassword.className = 'details_text';
         labelEmail.className = 'details_text';
         labelName.className = 'details_text';
-        labelImg.className = 'details_text';
+        labeladmin.className = 'details_text';
     
         formUsername.className = 'add_form';
         formPassword.className = 'add_form';
@@ -53,7 +48,7 @@ function displayRegisterMenu() {
         let confirmPasswordContainer = document.createElement('div');
         let nameContainer = document.createElement('div');
         let emailContainer = document.createElement('div');
-        let imgContainer = document.createElement('div');
+        let adminContainer = document.createElement('div');
     
         usernameContainer.appendChild(labelUsername);
         usernameContainer.appendChild(formUsername);
@@ -70,23 +65,21 @@ function displayRegisterMenu() {
         emailContainer.appendChild(labelEmail);
         emailContainer.appendChild(formEmail);
 
-        imgContainer.appendChild(labelImg);
-        imgContainer.appendChild(formImg);
-        imgContainer.appendChild(uploadButton);
+        adminContainer.appendChild(labeladmin);
+        adminContainer.appendChild(formadmin);
     
         passwordContainer.className = 'login_container';
         usernameContainer.className = 'login_container';
         confirmPasswordContainer.className = 'login_container';
         emailContainer.className = 'login_container';
         nameContainer.className = 'login_container';
-        imgContainer.className = 'login_container';
+        adminContainer.className = 'login_container';
     
         container.appendChild(nameContainer);
         container.appendChild(emailContainer);
         container.appendChild(usernameContainer);
         container.appendChild(passwordContainer);
         container.appendChild(confirmPasswordContainer);
-        container.appendChild(imgContainer);
     
         let confirmButton = document.createElement('button');
         confirmButton.className = 'login_button';
@@ -114,10 +107,40 @@ function displayRegisterMenu() {
 }
 
 function createProfile() {
-    let formUsername = document.getElementById('formUsername');
-    let formPassword = document.getElementById('formPassword');
-    let formConfirmPassword = document.getElementById('formPassword');
-    let formEmail = document.getElementById('formEmail');
-    let formName = document.getElementById('formName');
-    let formImg = document.getElementById('formImg');
+    let formUsername = document.getElementById('formUsername').value;
+    let formPassword = document.getElementById('formPassword').value;
+    let formConfirmPassword = document.getElementById('formConfirmPassword').value;
+    let formEmail = document.getElementById('formEmail').value;
+    let formName = document.getElementById('formName').value;
+
+    if (!formUsername || !formPassword || !formConfirmPassword || !formEmail || !formName) {
+        alert('Toate câmpurile sunt obligatorii pentru înregistrare!');
+        return;
+    }
+
+    if (formPassword != formConfirmPassword) {
+        alert('Parolele nu se potrivesc!');
+        return;
+    }
+
+    const postUser = {
+        name: formName,
+        email: formEmail,
+        username: formUsername,
+        password: formPassword,
+        admin: "no"
+    };
+
+    fetch('http://localhost:3000/users', {
+        method: 'POST',
+
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(postUser)
+    });
+
+    let mainPage = document.getElementById('main_container');
+    mainPage.innerHTML = mainPageHTML;
+    startWebPage();
 }

@@ -24,6 +24,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         let editButton = document.createElement('button');
         editButton.className = 'button';
         editButton.addEventListener('click', () => {
+            checkIfLoggedIn();
             editArtist(typeArtist, artists[i]);
         });
         editButton.innerText = 'Editează';
@@ -31,15 +32,24 @@ function appendArtistsToDOM(artists, typeArtist) {
         let deleteButton = document.createElement('button');
         deleteButton.className = 'button';
         deleteButton.addEventListener('click', () => {
+            checkIfLoggedIn();
             deleteArtist(typeArtist, artists[i].id)
         });
         deleteButton.innerText = 'Șterge';
+
+        let commButton = document.createElement('button');
+        commButton.className = 'button';
+        commButton.addEventListener('click', () => {
+            displayCommPage(typeArtist, artists[i].id);
+        });
+        commButton.innerText = 'Comentarii';
 
         let container = document.createElement('div');
         container.className = 'container_formation';
         container.appendChild(detailsButton);
         container.appendChild(editButton);
         container.appendChild(deleteButton);
+        container.appendChild(commButton);
 
         let bigContainer = document.createElement('div');
         bigContainer.className = 'big_container_formation';

@@ -2,8 +2,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "User1",
-    "password": "password"
+    "username": "a",
+    "password": "a"
 }
 
 ###
@@ -11,13 +11,13 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
      
 {
-    "username": "Giani",
-    "password": "password"
+    "username": "a",
+    "password": "a"
 }
 
 ###
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdpYW5pIiwiaWF0IjoxNTkxNDU3OTM3LCJleHAiOjE1OTE0NTg1Mzd9.BRprERiAQSxu5gzU2nHFS0bc6W2oxT9xY8p5djbs9L8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImEiLCJpYXQiOjE1OTIxNDY5NjAsImV4cCI6MTU5MjE0NzU2MH0.yfyVTK_qL0iOJBxPB1N9iO6jvdUlviKfcF_rqNfaSic
 
 ###
 POST http://localhost:3000/token
@@ -25,4 +25,34 @@ Content-Type: application/json
 
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdpYW5pIiwicGFzc3dvcmQiOiIkMmIkMTAkZ0g2VnRxNkdBWXFZT3VCZzJyalI3Lm5hWFhZcUlsNmJOdWhiMXVrYzZ0aTNySnRHVjZwLzYiLCJpYXQiOjE1OTE0NTcyODd9.kWX4ovGzipBWUcH8wy5yza6fEiAEGL9V49bXQEP6YFk"
+}
+
+###
+GET http://localhost:3000/comms/rock/1
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
+###
+PUT http://localhost:3000/comms/rock/1
+Content-Type: application/json
+
+{
+    "id": "1",
+            "comms": [
+                {
+                    "id" : "1",
+                    "text": "E bun",
+                    "upVotes": "1",
+                    "downVotes": "0"
+                },
+                {
+                    "id" : "2",
+                    "text": "Nu e bun",
+                    "upVotes": "0",
+                    "downVotes": "0"
+                }
+            ]
 }

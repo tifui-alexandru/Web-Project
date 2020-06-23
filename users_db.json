@@ -1,20 +1,32 @@
 {
 	"users": [
 		{
+			"name": "Eu",
+			"email": "dan@gmail.com",
 			"username": "Eu",
-			"password": "1234"
+			"password": "1234",
+			"admin": "yes"
 		},
 		{
-			"username": "Tu",
-			"password": "$2b$10$eW3ukVork4l87QlaBqSY4ulSYgjOdBjmYEGuUO3rFqNf/mN48Bqxe"
+			"name": "rg",
+			"email": "g",
+			"username": "alex",
+			"password": "$2b$10$wvC8UHPwV/gT5cQWhGrZ8uECHEQxResmgUEFdjuglCgKP4ZxrUq5q",
+			"admin": "no"
 		},
 		{
-			"username": "Giani",
-			"password": "$2b$10$gH6Vtq6GAYqYOuBg2rjR7.naXXYqIl6bNuhb1ukc6ti3rJtGV6p/6"
+			"name": "rg",
+			"email": "g",
+			"username": "a",
+			"password": "$2b$10$1zJr8PBWqQjNtMA8mGDAuegCRUSqkSKKQyHbAOlROXhqfBbBBn3OO",
+			"admin": "no"
 		},
 		{
-			"username": "User1",
-			"password": "$2b$10$ZLsimctQMJ2jp5DB6cEJZ.3TJV63WXEChb0B3dbvsbvF.8NZyeApm"
+			"name": "x",
+			"email": "cc",
+			"username": "ccc",
+			"password": "$2b$10$tYygQ4jSXi1asKSVuxgpSeOqMhK6JhlvmJjkA/omcF6JjhJM9tTv.",
+			"admin": "no"
 		}
 	]
 }

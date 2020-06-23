@@ -54,7 +54,7 @@ function displayLoginMenu() {
     let confirmButton = document.createElement('button');
     confirmButton.className = 'login_button';
     confirmButton.addEventListener('click', () => {
-
+        authenticateUser();
     });
     confirmButton.innerText = 'Confirmă';
     confirmButton.id = 'confirm-button';
@@ -79,4 +79,59 @@ function displayLoginMenu() {
     while (mainTag[0].firstChild)
         mainTag[0].removeChild(mainTag[0].firstChild);
     mainTag[0].appendChild(container);
+}
+
+function authenticateUser() {
+    let formUsername = document.getElementById('formUsername').value;
+    let formPassword = document.getElementById('formPassword').value;
+
+    if (!formPassword || !formUsername) {
+        alert('Toate câmpurile sunt obligatorii pentru autentificare!');
+        return;
+    }
+
+    const postUser = {
+        username: formUsername,
+        password: formPassword
+    };
+
+    fetch('http://localhost:3000/users/login', {
+        method: 'POST',
+
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(postUser)
+    }).then(response => {
+        if (response.status == 400) alert('Numele de utilizator este greșit!');
+        else if (response.status == 401) alert('Parola este greșită!');
+        else if (response.status == 200) {
+            response.json().then(data => {
+                displayLoginPageStyle(data);
+            });
+        }
+    });
+}
+
+function displayLoginPageStyle(data) {
+    let loginButton = document.getElementById('login-button');
+    let container = loginButton.parentNode;
+    container.removeChild(loginButton);
+
+    let profileButton = document.createElement('button');
+    profileButton.id = 'profile-button';
+    profileButton.className = 'header_button';
+    profileButton.addEventListener('click', () => {
+        displayProfileMenu({ accessToken: data.accessToken, refreshToken: data.refreshToken });
+    });
+    profileButton.innerText = 'Profilul meu';
+    container.appendChild(profileButton);
+                
+    let mainPage = document.getElementById('main_container');
+    mainPage.innerHTML = mainPageHTML;
+    startWebPage();
+}
+
+function checkIfLoggedIn() {
+    
 }

@@ -13,6 +13,8 @@ const jwt = require('jsonwebtoken');
 const typeArtistArray = ['rock-artists', 'pop-artists', 'disco-artists', 'rap-artists', 'jazz-artists', 
                          'techno-artists', 'raggae-artists', 'trap-artists', 'lautareasca-artists', 'populara-artists'];
 
+const shortTypeArtistsArray = ['rock', 'pop', 'disco', 'rap', 'jazz', 'techno', 'raggae', 'trap', 'lautareasca', 'populara'];
+
 const app = express();
 
 app.use(morgan('tiny'));
@@ -132,7 +134,7 @@ for (let i = 0; i < typeArtistArray.length; ++i) {
     deleteContent(typeArtistArray[i]);
 }
 
-// login stuff
+// login stuff -----------------------------------------------------------------------------------------------------------------------------------------
 
 function readJSONUsers() {
     return JSON.parse(fs.readFileSync('users_db.json'));
@@ -158,8 +160,14 @@ function writeJSONUsers(content) {
 // get the user I have access to
 app.get('/users', authenticateToken, (req, res) => {
     const users = readJSONUsers()['users'];
-    const retUser = users.find(user => user.username == req.user.username)['username'];
-    res.json(retUser);
+    const retUser = users.find(user => user.username == req.user.username);
+    const retObj = {
+        name: retUser.username,
+        email: retUser.email,
+        username: retUser.username,
+        admin: retUser.admin
+    };
+    res.json(retObj);
 });
 
 function authenticateToken(req, res, next) {
@@ -185,7 +193,13 @@ app.post('/users', async (req, res) => {
 
         const pass = req.body.password;
         const hashedPassword = await bcrypt.hash(pass, 10);
-        const user = { username: req.body.username, password: hashedPassword };
+        const user = { 
+            name: req.body.name,
+            email: req.body.email,
+            username: req.body.username, 
+            password: hashedPassword,
+            admin: req.body.admin
+        };
 
         usersList['users'].push(user);
 
@@ -198,7 +212,7 @@ app.post('/users', async (req, res) => {
     }
 });
 
-const refreshTokenList = [];
+const refreshTokenList = []; // this should be a json
 
 // login user
 app.post('/users/login', async (req, res) => {
@@ -219,7 +233,7 @@ app.post('/users/login', async (req, res) => {
             res.json({ accessToken: accessToken, refreshToken: refreshToken });
         }
         else 
-            res.send('Wrong Password');
+            res.status(401).send('Wrong password');
     } 
     catch {
         res.status(500).send();
@@ -243,6 +257,82 @@ app.delete('/logout', (req, res) => {
     refreshTokenList = refreshTokenList.filter(token => token != req.body.token);
     res.sendStatus(204);
 });
+
+
+// comm stuff -----------------------------------------------------------------------------------------------------------------------------------------
+
+function readJSONComms(typeArtist) {
+    return JSON.parse(fs.readFileSync('comms_db.json'))[typeArtist];
+}
+
+function readAllJSONComms() {
+    return JSON.parse(fs.readFileSync('comms_db.json'));
+}
+
+function writeJSONComms(content) {
+    fs.writeFileSync('comms_db.json',
+        JSON.stringify(content, null, '\t'),
+        'utf-8',
+        err => {
+            if (err) {
+                console.log(err)
+            }
+        });
+}
+
+function readComm(typeArtist) {
+    app.get('/comms/' + typeArtist + '/:id', (req, res) => {
+        const commsList = readJSONComms(typeArtist);
+        const id = req.params.id;
+        let idFound = false;
+        let commFound;
+
+        commsList.forEach(comm => {
+            if (id == comm.id) {
+                idFound = true;
+                commFound = comm;
+            }
+        });
+
+        if (idFound) res.json(commFound);
+        else res.status(404).send(`Comm ${id} was not found`);
+    });
+}
+
+function updateComm(typeArtist) {
+    app.put('/comms/' + typeArtist + '/:id', (req, res) => {
+        const commsList = readJSONComms(typeArtist);
+        const id = req.params.id;
+        const newComm = req.body;
+        newComm.id = id;
+        let idFound = false;
+
+        const newCommsList = commsList.map((comm) => {
+            if (comm.id == id) {
+                idFound = true;
+                return newComm;
+            }
+            return comm;
+        })
+
+
+        const newComms = readAllJSONComms();
+        newComms[typeArtist] = newCommsList;
+        writeJSONComms(newComms);
+
+        if (idFound)
+            res.json(newComms);
+        else
+            res.status(404).send(`Comm ${id} was not found`);
+    })
+}
+
+
+for (let i = 0; i < typeArtistArray.length; ++i) {
+    readComm(shortTypeArtistsArray[i]);
+    updateComm(shortTypeArtistsArray[i]);
+}
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
