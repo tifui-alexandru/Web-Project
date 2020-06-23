@@ -99,7 +99,7 @@ function displayCommPage(typeArtist, idArtist) {
     addComm.className = 'add-comm-button';
     addComm.addEventListener('click', () => {
         checkIfLoggedIn();
-        addComm(typeArtist, idArtist);
+        addComment(typeArtist, idArtist);
     });
     commMainTag.appendChild(addComm);
 
@@ -184,12 +184,27 @@ function deleteComm(typeArtist, idArtist, comm, commList) {
     );
 }
 
-function addComm(typeArtist, idArtist) {
+function addComment(typeArtist, idArtist) {
     mainTag = document.getElementsByTagName('main');
     while (mainTag[0].firstChild)
         mainTag[0].removeChild(mainTag[0].firstChild);
     
-    
-    
-    displayCommPage(typeArtist, idArtist);
+    let textBox = document.createElement('input');
+    textBox.type = 'text';
+    textBox.id = 'comment';
+    textBox.className = 'comment-textbox';
+
+    // post comment, to be continued
+
+    let postCommButton = document.createElement('button');
+    postCommButton.className = 'post-comment-button';
+    postCommButton.innerText = 'Postează comentariul';
+    postCommButton.addEventListener('click', () => {
+        
+
+        displayCommPage(typeArtist, idArtist); 
+    });
+
+    mainTag[0].appendChild(textBox);
+    mainTag[0].appendChild(postCommButton);
 }

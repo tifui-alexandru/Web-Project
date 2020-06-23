@@ -508,3 +508,27 @@ footer {
     display: flex;
     justify-content: space-around;
 }
+
+.comment-textbox {
+    width: 1000px;
+    height: 500px;
+    border: solid;
+    border-color: darkslategray;
+    border-width: 20px;
+    border-radius: 5rem;
+    margin-top: 50px;
+    font-size: 18px;
+    text-align: start;
+    padding: 15px;
+    vertical-align: text-top;
+}
+
+.post-comment-button {
+    cursor: pointer;
+    background-color: #231F20;
+	color: whitesmoke;
+	width: 250px;
+	height: 120px;
+    font-size: 35px;
+    border-radius: 1rem;
+}
