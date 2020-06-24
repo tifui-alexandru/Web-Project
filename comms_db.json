@@ -33,6 +33,29 @@
 					"downVotes": "0"
 				}
 			]
+		},
+		{
+			"id": "0751e700-943f-11ea-8c9d-db35cac13c7f",
+			"comms": [
+				{
+					"id": "0",
+					"text": "NULL",
+					"upVotes": 0,
+					"downVotes": 100
+				},
+				{
+					"id": 1,
+					"text": "c",
+					"upVotes": 2,
+					"downVotes": 4
+				},
+				{
+					"id": 2,
+					"text": "eee",
+					"upVotes": "0",
+					"downVotes": "0"
+				}
+			]
 		}
 	],
 	"pop": [
@@ -118,7 +141,7 @@
 				{
 					"id": "1",
 					"text": "E bun",
-					"upVotes": "0",
+					"upVotes": 1,
 					"downVotes": "0"
 				},
 				{

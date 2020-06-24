@@ -327,10 +327,24 @@ function updateComm(typeArtist) {
     })
 }
 
+function postComm(typeArtist) {
+    app.post('/comms/' + typeArtist, (req, res) => {
+        const commsList = readJSONComms(typeArtist);
+        const newComm = req.body;
+        const newCommsList = [...commsList, newComm];
+
+        const All = readAllJSONComms();
+        All[typeArtist] = newCommsList;
+        writeJSONComms(All);
+
+        res.json(newComm);
+    })
+}
 
 for (let i = 0; i < typeArtistArray.length; ++i) {
     readComm(shortTypeArtistsArray[i]);
     updateComm(shortTypeArtistsArray[i]);
+    postComm(shortTypeArtistsArray[i]);
 }
 
 

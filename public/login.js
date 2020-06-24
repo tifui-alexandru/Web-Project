@@ -133,5 +133,5 @@ function displayLoginPageStyle(data) {
 }
 
 function checkIfLoggedIn() {
-    
+    return true;
 }

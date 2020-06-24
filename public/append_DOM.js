@@ -24,7 +24,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         let editButton = document.createElement('button');
         editButton.className = 'button';
         editButton.addEventListener('click', () => {
-            checkIfLoggedIn();
+            if (!checkIfLoggedIn()) return;
             editArtist(typeArtist, artists[i]);
         });
         editButton.innerText = 'Editează';
@@ -32,7 +32,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         let deleteButton = document.createElement('button');
         deleteButton.className = 'button';
         deleteButton.addEventListener('click', () => {
-            checkIfLoggedIn();
+            if (!checkIfLoggedIn()) return;
             deleteArtist(typeArtist, artists[i].id)
         });
         deleteButton.innerText = 'Șterge';
