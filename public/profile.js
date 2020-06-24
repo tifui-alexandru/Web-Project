@@ -15,7 +15,7 @@ function displayProfileMenu(token) {
     clearAllArtists();
 
     let container = document.createElement('div');
-    container.className = 'add_menu';
+    container.className = 'profile-box';
 
     fetch('http://localhost:3000/users', {
         method: 'GET',
@@ -35,53 +35,51 @@ function displayProfileMenu(token) {
 
 function getProfile(containerRef, data) {
     let name = document.createElement('span');
-    name.innerText = data.name;
-    name.className = 'formation_name';
+    name.innerText = 'Nume: ' + data.name;
+    name.className = 'user_details';
 
     let username = document.createElement('span');
-    username.innerText = data.username;
-    username.className = 'formation_name';
+    username.innerText = 'Nume de utilizator: ' + data.username;
+    username.className = 'user_details';
 
     let email = document.createElement('span');
-    email.innerText = data.email;
-    email.className = 'formation_name';
-
-    let editButton = document.createElement('button');
-    editButton.className = 'button';
-    editButton.addEventListener('click', () => {
-        editAccount();
-    });
-    editButton.innerText = 'Editează';
-
-    let deleteButton = document.createElement('button');
-    deleteButton.className = 'button';
-    deleteButton.addEventListener('click', () => {
-        deleteAccount();
-    });
-    deleteButton.innerText = 'Șterge';
+    email.innerText = 'Email: ' + data.email;
+    email.className = 'user_details';
 
     let logoutButton = document.createElement('button');
-    logoutButton.className = 'button';
+    logoutButton.className = 'user_profile_button';
     logoutButton.addEventListener('click', () => {
         Logout();
     });
-
-    let container = document.createElement('div');
-    container.className = 'container_formation';
-    container.appendChild(editButton);
-    container.appendChild(deleteButton);
-    container.appendChild(logoutButton);
-
-    let bigContainer = document.createElement('div');
-    bigContainer.className = 'big_container_formation';
-    bigContainer.appendChild(container);
+    logoutButton.innerText = 'Deconectează-te';
 
     let biggerContainer = document.createElement('div');
-    biggerContainer.className = 'artist-box';
+    biggerContainer.className = 'smaller-profile-box';
     biggerContainer.appendChild(name);
     biggerContainer.appendChild(username);
     biggerContainer.appendChild(email);
-    biggerContainer.appendChild(bigContainer);
+    biggerContainer.appendChild(logoutButton);
         
     containerRef.appendChild(biggerContainer);
+}
+
+function Logout() {
+    localStorage.setItem('loggedOn', 'false');
+
+    let loginButton = document.getElementById('profile-button');
+    let container = loginButton.parentNode;
+    container.removeChild(loginButton);
+
+    let profileButton = document.createElement('button');
+    profileButton.id = 'login-button';
+    profileButton.className = 'header_button';
+    profileButton.addEventListener('click', () => {
+        displayLoginMenu();
+    });
+    profileButton.innerText = 'Autentificare';
+    container.appendChild(profileButton);
+                
+    let mainPage = document.getElementById('main_container');
+    mainPage.innerHTML = mainPageHTML;
+    startWebPage();
 }

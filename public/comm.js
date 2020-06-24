@@ -75,13 +75,8 @@ function displayComm(typeArtist, idArtist, commsList) {
             hide(textComm, hideButton);
         });
 
-        let userInfo = document.createElement('p');
-        userInfo.className = 'user_info_comm';
-        userInfo.innerText = 'USERNAME';
-
         let topContainer = document.createElement('div');
         topContainer.className = 'top_comm_container';
-        topContainer.appendChild(userInfo);
         topContainer.appendChild(deleteButton);
         topContainer.appendChild(hideButton);
 
@@ -154,6 +149,7 @@ function displayCommPage(typeArtist, idArtist) {
                 ]
             };
             addComm.addEventListener('click', () => {
+                if (!checkIfLoggedIn()) return;
                 addComment(typeArtist, idArtist, commsList, postComment);
             });
         }
@@ -161,6 +157,7 @@ function displayCommPage(typeArtist, idArtist) {
             response.json().then(commsList => {
                 displayComm(typeArtist, idArtist, commsList);
                 addComm.addEventListener('click', () => {
+                    if (!checkIfLoggedIn()) return;
                     addComment(typeArtist, idArtist, commsList, putComment);
                 });
             })

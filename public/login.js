@@ -1,3 +1,5 @@
+localStorage.setItem('loggedOn', 'false');
+
 let loginButton = document.getElementById('login-button');
 loginButton.addEventListener('click', () => {
     displayLoginMenu();
@@ -95,6 +97,8 @@ function authenticateUser() {
         password: formPassword
     };
 
+    User = postUser;
+
     fetch('http://localhost:3000/users/login', {
         method: 'POST',
 
@@ -107,6 +111,8 @@ function authenticateUser() {
         else if (response.status == 401) alert('Parola este greșită!');
         else if (response.status == 200) {
             response.json().then(data => {
+                localStorage.setItem('loggedOn', 'true');
+                mainToken = data;
                 displayLoginPageStyle(data);
             });
         }
@@ -133,5 +139,7 @@ function displayLoginPageStyle(data) {
 }
 
 function checkIfLoggedIn() {
-    return true;
+    if (localStorage.getItem('loggedOn') == 'true') return true;
+    alert('Pentru a realiza această acțiune trebuie să fiți autentificat!');
+    return false;
 }

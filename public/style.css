@@ -494,6 +494,7 @@ footer {
 	width: 150px;
 	height: 55px;
     margin-top: 23px;
+    margin-bottom: 23px;
     font-size: 20px;
 }
 
@@ -530,4 +531,47 @@ footer {
 	height: 120px;
     font-size: 35px;
     border-radius: 1rem;
+}
+
+.user_details {
+    color: white;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-bottom: -40px;
+    margin-top: -40px;
+}
+
+.user_profile_button {
+    cursor: pointer;
+	background-color: darkslategray;
+	color: whitesmoke;
+	border-radius: 0.5rem;
+	width: 400px;
+	font-size: 20px;
+    height: 70px;
+    margin-left: 50px;
+}
+
+.smaller-profile-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-box {
+    background-color: #231F20;
+    border: solid white;
+    width: 500px;
+    height: 480px;
+    margin-top: 50px;
+}
+
+.hide-img-button {
+    cursor: pointer;
+	background-color: darkslategray;
+	color: whitesmoke;
+	width: 200px;
+	font-size: 20px;
+    height: 70px;
+    margin-right: 100px;
+    margin-top: 35px;
 }

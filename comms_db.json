@@ -6,7 +6,7 @@
 				{
 					"id": "1",
 					"text": "E bun",
-					"upVotes": 0,
+					"upVotes": 2,
 					"downVotes": 0
 				},
 				{
@@ -14,6 +14,12 @@
 					"text": "Nu e bun",
 					"upVotes": "0",
 					"downVotes": 0
+				},
+				{
+					"id": 3,
+					"text": "",
+					"upVotes": 1,
+					"downVotes": "0"
 				}
 			]
 		},
