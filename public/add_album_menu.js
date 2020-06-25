@@ -38,7 +38,6 @@ function displayAddAlbumMenu(typeArtist, artist) {
     updateButton.className = 'add_album_button';
     updateButton.addEventListener('click', () => {
         currentPage = 'artistsList_' + typeArtist;
-        addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         addAlbum(typeArtist, artist);
         clearAddMenu(typeArtist);
     });

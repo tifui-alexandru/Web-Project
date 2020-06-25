@@ -69,7 +69,6 @@ function editArtist(typeArtist, artist) {
     updateButton.className = 'edit_menu_button';
     updateButton.addEventListener('click', () => {
         currentPage = 'artistsList_' + typeArtist;
-        addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         postArtist(typeArtist);
         clearAddMenu(typeArtist);
     });
@@ -101,7 +100,6 @@ function editArtist(typeArtist, artist) {
 
     updateButton.addEventListener('click', () => {
         currentPage = 'artistsList_' + typeArtist;
-        addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         updateArtist(typeArtist, artist);
     });
 }

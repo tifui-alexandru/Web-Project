@@ -49,7 +49,7 @@ function deleteArtist(typeArtist, id) {
     artistLocalHost = musicTypeDict[typeArtist].localHost;
     fetch(artistLocalHost + '/' + id, {
         method: 'DELETE',
-    });
+    })
     getArtists(typeArtist);
 }
 

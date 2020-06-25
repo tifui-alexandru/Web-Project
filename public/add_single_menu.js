@@ -29,7 +29,6 @@ function displayAddSingleMenu(typeArtist, artist) {
     updateButton.className = 'add_album_button';
     updateButton.addEventListener('click', () => {
         currentPage = 'artistsList_' + typeArtist;
-        addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         addSingle(typeArtist, artist);
         clearAddMenu(typeArtist);
     });

@@ -89,7 +89,6 @@ function displayAddMenu(typeArtist) {
     updateButton.className = 'add_menu_button';
     updateButton.addEventListener('click', () => {
         currentPage = 'artistsList_' + typeArtist;
-        addHistoryEvent('Artist adăugat', String(typeArtist));
         postArtist(typeArtist);
         clearAddMenu(typeArtist);
     });

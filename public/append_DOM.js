@@ -35,7 +35,6 @@ function appendArtistsToDOM(artists, typeArtist) {
         deleteButton.className = 'button';
         deleteButton.addEventListener('click', () => {
             if (!checkIfLoggedIn()) return;
-            addHistoryEvent('Artist șters', String(typeArtist) + '/' + String(artists[i].id));
             deleteArtist(typeArtist, artists[i].id)
         });
         deleteButton.innerText = 'Șterge';

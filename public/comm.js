@@ -32,7 +32,6 @@ function displayComm(typeArtist, idArtist, commsList) {
         upVotesContainer.className = 'votes_no_container';
         upVotesButton.addEventListener('click', () => {
             if (!checkIfLoggedIn()) return;
-            addHistoryEvent('Vot pozitiv', String(typeArtist) + '/' + String(idArtist) + '/' +String(comm.id));
             upVote(typeArtist, idArtist, comm, commsList);
             alert('Votul dumneavoastră a fost procesat');
         })
@@ -56,7 +55,6 @@ function displayComm(typeArtist, idArtist, commsList) {
         downVotesContainer.className = 'votes_no_container';
         downVotesButton.addEventListener('click', () => {
             if (!checkIfLoggedIn()) return;
-            addHistoryEvent('Vot negativ', String(typeArtist) + '/' + String(idArtist) + '/' +String(comm.id));
             downVote(typeArtist, idArtist, comm, commsList);
             alert('Votul dumneavoastră a fost procesat');
         });
@@ -67,7 +65,6 @@ function displayComm(typeArtist, idArtist, commsList) {
         deleteButton.addEventListener('click', () => {
             if (!checkIfLoggedIn()) return;
             // updateComms(deleteComm ,typeArtist, idArtist, comm);
-            addHistoryEvent('Comentariu șters', String(typeArtist) + '/' + String(idArtist) + '/' +String(comm.id));
             deleteComm(typeArtist, idArtist, comm, commsList);
         });
 
@@ -281,7 +278,6 @@ function putComment(typeArtist, idArtist, commentText, commentsList) {
         body: JSON.stringify(putObject)
         
     }).then(
-        addHistoryEvent('Comentariu adăugat', String(typeArtist) + '/' + String(idArtist) + '/' +String(idComm)),
         displayCommPage(typeArtist, idArtist, commentsList)
     );
 }
@@ -313,7 +309,6 @@ function postComment(typeArtist, idArtist, commentText, commentsList) {
         body: JSON.stringify(putObject)
         
     }).then(
-        addHistoryEvent('Comentariu adăugat', String(typeArtist) + '/' + String(idArtist) + '/' +String(idComm)),
         displayCommPage(typeArtist, idArtist, commentsList)
     );
 }

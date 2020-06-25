@@ -33,6 +33,17 @@ function create(typeArtist) {
         musicTypes[typeArtist] = newArtistList;
         writeJSONFile(musicTypes);
 
+        const historyItem = {
+            "id": uuidv1(),
+            "action": "Adăugare artist",
+            "user": activeUser,
+            "date": getCurrentDate(),
+            "alteredItem": typeArtist + '/' + newArtist.id
+        };
+        let historyList = readJSONHistory();
+        historyList.push(historyItem);
+        writeJSONHistory(historyList);
+
         res.json(newArtist);
     });
 }
@@ -51,7 +62,20 @@ function readOne(typeArtist) {
             }
         });
 
-        if (idFound) res.json(artistFound);
+        if (idFound) {
+            const historyItem = {
+                "id": uuidv1(),
+                "action": "Vizualizare artist",
+                "user": activeUser,
+                "date": getCurrentDate(),
+                "alteredItem": typeArtist + '/' + id
+            };
+            let historyList = readJSONHistory();
+            historyList.push(historyItem);
+            writeJSONHistory(historyList);
+
+            res.json(artistFound);
+        }
         else res.status(404).send(`Artist ${id} was not found`);
     });
 }
@@ -83,8 +107,20 @@ function update(typeArtist) {
         musicTypes[typeArtist] = newArtistList;
         writeJSONFile(musicTypes);
 
-        if (idFound)
+        if (idFound) {
+            const historyItem = {
+                "id": uuidv1(),
+                "action": "Editare artist",
+                "user": activeUser,
+                "date": getCurrentDate(),
+                "alteredItem": typeArtist + '/' + newArtist.id
+            };
+            let historyList = readJSONHistory();
+            historyList.push(historyItem);
+            writeJSONHistory(historyList);
+
             res.json(newArtist);
+        }
         else
             res.status(404).send(`Artist ${id} was not found`);
     });
@@ -103,6 +139,17 @@ function deleteContent(typeArtist) {
             const musicTypes = readAllJSONFile();
             musicTypes[typeArtist] = newArtistList;
             writeJSONFile(musicTypes);
+
+            const historyItem = {
+                "id": uuidv1(),
+                "action": "Ștergere artist",
+                "user": activeUser,
+                "date": getCurrentDate(),
+                "alteredItem": typeArtist + '/' + id
+            };
+            let historyList = readJSONHistory();
+            historyList.push(historyItem);
+            writeJSONHistory(historyList);
         }
     });
 }
@@ -188,7 +235,6 @@ function authenticateToken(req, res, next) {
 }
 
 // register user
-// to do: verify if username is already used
 app.post('/users', async (req, res) => {
     try {
         const usersList = readJSONUsers();
@@ -227,7 +273,7 @@ app.post('/users/login', async (req, res) => {
 
     try {
         if (await bcrypt.compare(req.body.password, user.password)) {
-            const accessToken = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' });
+            const accessToken = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m' });
             const refreshToken = jwt.sign({ username: user.username }, process.env.REFRESH_TOKEN_SECRET);
 
             refreshTokenList.push(refreshToken);
@@ -324,8 +370,20 @@ function updateComm(typeArtist) {
         newComms[typeArtist] = newCommsList;
         writeJSONComms(newComms);
 
-        if (idFound)
+        if (idFound) {
+            const historyItem = {
+                "id": uuidv1(),
+                "action": "Modificare comentarii",
+                "user": activeUser,
+                "date": getCurrentDate(),
+                "alteredItem": typeArtist + '/' + id
+            };
+            let historyList = readJSONHistory();
+            historyList.push(historyItem);
+            writeJSONHistory(historyList);
+
             res.json(newComms);
+        }
         else
             res.status(404).send(`Comm ${id} was not found`);
     })
@@ -340,6 +398,17 @@ function postComm(typeArtist) {
         const All = readAllJSONComms();
         All[typeArtist] = newCommsList;
         writeJSONComms(All);
+
+        const historyItem = {
+            "id": uuidv1(),
+            "action": "Adăugare comentariu",
+            "user": activeUser,
+            "date": getCurrentDate(),
+            "alteredItem": typeArtist + '/' + id
+        };
+        let historyList = readJSONHistory();
+        historyList.push(historyItem);
+        writeJSONHistory(historyList);
 
         res.json(newComm);
     })
@@ -375,24 +444,6 @@ function getCurrentDate() {
     return String(today.getDay()) + '-' + String(today.getMonth()) + '-' + String(today.getFullYear()) + ' ' +
     String(today.getHours()) + ':' + String(today.getMinutes()) + ':' + String(today.getSeconds()) + ':' + String(today.getMilliseconds());
 }
-
-app.post('/history', (req, res) => {
-    let histList = readJSONHistory();
-
-    const action = {
-        "id": uuidv1(),
-        "name": req.body.name,
-        "user": activeUser,
-        "date": getCurrentDate(),
-        "modified_item": req.id
-    }
-
-    histList.push(action);
-    writeJSONHistory(histList);
-
-    res.json(action);
-});
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
