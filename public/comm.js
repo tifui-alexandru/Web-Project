@@ -3,7 +3,7 @@ function displayComm(typeArtist, idArtist, commsList) {
         if (!comm) return;
 
         const x = comm.downVotes;
-        if (x >= 10) {
+        if (x >= 3) {
             return;
         }
 

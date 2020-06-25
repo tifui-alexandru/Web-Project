@@ -33,5 +33,103 @@
 		"user": null,
 		"date": "4-5-2020 21:29:46:424",
 		"alteredItem": "rock-artists/2"
+	},
+	{
+		"id": "1819f4b0-b712-11ea-8d14-fb53f6adcead",
+		"action": "Adăugare artist",
+		"user": "mm",
+		"date": "4-5-2020 21:31:32:987",
+		"alteredItem": "rock-artists/1819a690-b712-11ea-8d14-fb53f6adcead"
+	},
+	{
+		"id": "19206830-b712-11ea-9c7f-33f2bb885617",
+		"action": "Ștergere artist",
+		"user": null,
+		"date": "4-5-2020 21:31:34:707",
+		"alteredItem": "rock-artists/1819a690-b712-11ea-8d14-fb53f6adcead"
+	},
+	{
+		"id": "20ecb6e0-b712-11ea-9488-8b5db06323b7",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:31:47:790",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "2548e510-b712-11ea-9cdf-b72a3990e73e",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:31:55:105",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "277980b0-b712-11ea-88a7-bdfc55a6062e",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:31:58:779",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "29b084f0-b712-11ea-ba64-411fbce43fc7",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:32:2:496",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "2c8ddb50-b712-11ea-8d51-5122aea1d809",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:32:7:301",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "2fa55480-b712-11ea-ab94-8d231a08578e",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:32:12:488",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "f6ae8bf0-b712-11ea-891c-373302943fcb",
+		"action": "Modificare comentarii",
+		"user": "mm",
+		"date": "4-5-2020 21:37:46:415",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "0ca80120-b713-11ea-85e4-d7b658451ae2",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:38:23:282",
+		"alteredItem": "rock/2"
+	},
+	{
+		"id": "12e04250-b713-11ea-a105-53fb52cf4dc2",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:38:33:718",
+		"alteredItem": "rock/2"
+	},
+	{
+		"id": "29c35430-b713-11ea-93b9-11c3fe5cc38c",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:39:12:115",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "2d1abc90-b713-11ea-a40e-1f4959231213",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:39:17:722",
+		"alteredItem": "rock/1"
+	},
+	{
+		"id": "2e5b2bd0-b713-11ea-9357-bd32060caf53",
+		"action": "Modificare comentarii",
+		"user": null,
+		"date": "4-5-2020 21:39:19:821",
+		"alteredItem": "rock/1"
 	}
 ]

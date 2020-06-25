@@ -7,43 +7,13 @@
 					"id": "1",
 					"text": "E bun",
 					"upVotes": 5,
-					"downVotes": 1
+					"downVotes": 0
 				},
 				{
 					"id": "2",
 					"text": "Nu e bun",
 					"upVotes": 1,
 					"downVotes": 1
-				},
-				{
-					"id": 3,
-					"text": "",
-					"upVotes": 1,
-					"downVotes": 100
-				},
-				{
-					"id": 4,
-					"text": "wc ocsdu qdeiocvh89ewvhnc 9uieb vuieb9 n0i merv-jm ",
-					"upVotes": 1,
-					"downVotes": 100
-				},
-				{
-					"id": 5,
-					"text": "vbewrb",
-					"upVotes": "0",
-					"downVotes": 100
-				},
-				{
-					"id": 6,
-					"text": "ewfewgewr",
-					"upVotes": "0",
-					"downVotes": 100
-				},
-				{
-					"id": 7,
-					"text": "ewegweg",
-					"upVotes": "0",
-					"downVotes": "0"
 				}
 			]
 		},
@@ -61,6 +31,12 @@
 					"text": "Nu e bun",
 					"upVotes": "0",
 					"downVotes": "0"
+				},
+				{
+					"id": 3,
+					"text": "ewrgvbreb",
+					"upVotes": "0",
+					"downVotes": 100
 				}
 			]
 		},

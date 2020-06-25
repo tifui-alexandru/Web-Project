@@ -34,6 +34,13 @@
 			"username": "r",
 			"password": "$2b$10$woq6CH7fOkT2k2jaAAiDxumo8TgSp/1WyVZeUbLVju/q05vgbhDMW",
 			"admin": "no"
+		},
+		{
+			"name": "Mihai Popescu",
+			"email": "mpop@yahoo.com",
+			"username": "mm",
+			"password": "$2b$10$RbDg40Uc3VU7Nwi.zoJqjeTX4pg5QLUaafIEQfCY5uWn9MjqfC7hC",
+			"admin": "no"
 		}
 	]
 }
