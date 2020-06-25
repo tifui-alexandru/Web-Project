@@ -1,3 +1,6 @@
+let currentPage = 'homePage';
+localStorage.setItem('activeUser', null);
+
 const musicTypeArray = ['rock', 'pop', 'disco', 'rap', 'jazz', 'techno', 'raggae', 'trap', 'lautareasca', 'populara'];
 const musicTypeDict = {
     rock: {
@@ -16,7 +19,7 @@ const musicTypeDict = {
         localHost: 'http://localhost:3000/jazz-artists'
     },
     techno: {
-        localHost:'http://localhost:3000/techno-artists'
+        localHost: 'http://localhost:3000/techno-artists'
     },
     raggae: {
         localHost: 'http://localhost:3000/raggae-artists'
@@ -34,7 +37,7 @@ const musicTypeDict = {
 
 function getArtists(typeArtist) {
     artistLocalHost = musicTypeDict[typeArtist].localHost;
-    
+
     fetch(artistLocalHost).then(response => {
         response.json().then(artists => {
             appendArtistsToDOM(artists, typeArtist);
@@ -89,7 +92,7 @@ function updateArtist(typeArtist, putObject) {
 
     formName = document.getElementById('formName').value;
     formImg = document.getElementById('formImg').value;
-    formActivity = document.getElementById('formActivity').value; 
+    formActivity = document.getElementById('formActivity').value;
     formYt = document.getElementById('formYt').value;
     if (formName) putObject.name = formName;
     if (formImg) putObject.img = formImg;
@@ -129,7 +132,7 @@ function addAlbum(typeArtist, artist) {
         },
         body: JSON.stringify(putObject)
     });
-}  
+}
 
 function addSingle(typeArtist, artist) {
     artistLocalHost = musicTypeDict[typeArtist].localHost;
@@ -160,7 +163,7 @@ function displayDetalis(typeArtist, id) {
         method: 'GET',
     }).then(respone => {
         respone.json().then(artist => {
-            appendDetailsToDOM(typeArtist ,artist);
+            appendDetailsToDOM(typeArtist, artist);
             clearArtists(typeArtist);
         })
     });
@@ -171,15 +174,44 @@ function clearArtists(typeArtist) {
     if (artistsElement) {
         while (artistsElement.firstChild)
             artistsElement.removeChild(artistsElement.firstChild);
-    }   
+    }
+}
+
+function displayLoginPageStyle(data) {
+    let loginButton = document.getElementById('login-button');
+    if (loginButton) {
+        let container = loginButton.parentNode;
+        container.removeChild(loginButton);
+    
+        let profileButton = document.createElement('button');
+        profileButton.id = 'profile-button';
+        profileButton.className = 'header_button';
+        profileButton.addEventListener('click', () => {
+            currentPage = 'profilePage';
+            displayProfileMenu({ accessToken: data.accessToken, refreshToken: data.refreshToken });
+        });
+        profileButton.innerText = 'Profilul meu';
+        container.appendChild(profileButton);
+                    
+        let mainPage = document.getElementById('main_container');
+        mainPage.innerHTML = mainPageHTML;
+        startWebPage();
+    }
 }
 
 function startWebPage() {
+    if (localStorage.getItem('loggedOn') == 'true') {
+        let accessToken = localStorage.getItem('accessToken');
+        let refreshToken = localStorage.getItem('refreshToken');
+        displayLoginPageStyle({ accessToken: accessToken, refreshToken: refreshToken });
+    }
+
     showImg();
     for (let i = 0; i < musicTypeArray.length; ++i) {
         let elem = document.getElementById(musicTypeArray[i] + "_button");
         musicTypeDict[musicTypeArray[i]].element = document.getElementById(musicTypeArray[i]);
         elem.addEventListener('click', () => {
+            currentPage = 'artistsList_' + musicTypeArray[i];
             updateMain(musicTypeArray[i]);
             getArtists(musicTypeArray[i]);
         });
@@ -188,30 +220,36 @@ function startWebPage() {
 
 homeButton = document.getElementById('home-button');
 homeButton.addEventListener('click', () => {
+    currentPage = 'homePage'
     let mainPage = document.getElementById('main_container');
     mainPage.innerHTML = mainPageHTML;
     startWebPage();
 });
 
-function timeSpentOnSite() {
-    let ans = parseInt(localStorage.getItem('timeSpentOnSite'));
+function timeSpentOnSite(pageAndUser) {
+    let ans = parseInt(localStorage.getItem(pageAndUser));
     if (isNaN(ans)) ans = 0;
     return ans;
 }
 
-if (typeof(Storage) !== 'undefined') {
+if (typeof (Storage) !== 'undefined') {
     let start = Date.now();
     let footer = document.getElementById('response');
 
     let timer = setInterval(() => {
-        let time = timeSpentOnSite() + (Date.now() - start);
-        localStorage.setItem('timeSpentOnSite', time);
+        let pageAndUser = currentPage + '_' + String(localStorage.getItem('activeUser'));
+
+        let time = timeSpentOnSite(pageAndUser) + (Date.now() - start);
+        localStorage.setItem(pageAndUser, time);
         start = parseInt(Date.now());
 
         let minutes = parseInt(time / 60000);
         let seconds = parseInt(time / 1000) - minutes * 60;
 
-        footer.innerText = 'Ai petrecut în total: ' + minutes + ' minute și ' + seconds + ' secunde pe pagină';
+        if (localStorage.getItem('loggedOn') != 'false')
+            footer.innerText = 'Ai petrecut în total: ' + minutes + ' minute și ' + seconds + ' secunde pe această pagină';
+        else footer.innerText = 'Salut!';
+
     }, 1000);
 }
 else

@@ -21,12 +21,14 @@ function editArtist(typeArtist, artist) {
     let addAlbumButton = document.createElement('button');
     addAlbumButton.className = 'edit_menu_button';
     addAlbumButton.addEventListener('click', () => {
+        currentPage = 'addAlbumPage_' + typeArtist + artist.id;
         displayAddAlbumMenu(typeArtist, artist);
     });
     addAlbumButton.innerText = 'Adaugă album';
     let addSingleButton = document.createElement('button');
     addSingleButton.className = 'edit_menu_button';
     addSingleButton.addEventListener('click', () => {
+        currentPage = 'addSinglePage_' + typeArtist + artist.id;
         displayAddSingleMenu(typeArtist, artist);
     });
     addSingleButton.innerText = 'Adaugă single';
@@ -66,6 +68,7 @@ function editArtist(typeArtist, artist) {
     let updateButton = document.createElement('button');
     updateButton.className = 'edit_menu_button';
     updateButton.addEventListener('click', () => {
+        currentPage = 'artistsList_' + typeArtist;
         addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         postArtist(typeArtist);
         clearAddMenu(typeArtist);
@@ -76,6 +79,7 @@ function editArtist(typeArtist, artist) {
     let cancelButton = document.createElement('button');
     cancelButton.className = 'edit_menu_button';
     cancelButton.addEventListener('click', () => {
+        currentPage = 'artistsList_' + typeArtist;
         clearAddMenu(typeArtist);
     });
     cancelButton.innerText = 'Anulează';
@@ -96,6 +100,7 @@ function editArtist(typeArtist, artist) {
     updateButton = document.getElementById('update-button');
 
     updateButton.addEventListener('click', () => {
+        currentPage = 'artistsList_' + typeArtist;
         addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         updateArtist(typeArtist, artist);
     });

@@ -84,6 +84,7 @@ function displayRegisterMenu() {
         let confirmButton = document.createElement('button');
         confirmButton.className = 'login_button';
         confirmButton.addEventListener('click', () => {
+            currentPage = 'homePage';
             createProfile();
         });
         confirmButton.innerText = 'Confirmă';
@@ -92,6 +93,7 @@ function displayRegisterMenu() {
         let cancelButton = document.createElement('button');
         cancelButton.className = 'login_button';
         cancelButton.addEventListener('click', () => {
+            currentPage = 'authPage';
             displayLoginMenu();
         });
         cancelButton.innerText = 'Înapoi';

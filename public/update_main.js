@@ -35,6 +35,7 @@ function updateMain(typeArtist) {
     addButton.className = 'button';
     addButton.addEventListener('click', () => {
         if (!checkIfLoggedIn()) return;
+        currentPage = 'addArtist_' + typeArtist;
         displayAddMenu(typeArtist);
     });
     addButton.innerText = 'Adaugă trupă';

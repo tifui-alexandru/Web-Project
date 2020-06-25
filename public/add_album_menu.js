@@ -37,6 +37,7 @@ function displayAddAlbumMenu(typeArtist, artist) {
     let updateButton = document.createElement('button');
     updateButton.className = 'add_album_button';
     updateButton.addEventListener('click', () => {
+        currentPage = 'artistsList_' + typeArtist;
         addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         addAlbum(typeArtist, artist);
         clearAddMenu(typeArtist);
@@ -47,6 +48,7 @@ function displayAddAlbumMenu(typeArtist, artist) {
     let cancelButton = document.createElement('button');
     cancelButton.className = 'add_album_button';
     cancelButton.addEventListener('click', () => {
+        currentPage = 'artistsList_' + typeArtist;
         clearAddMenu(typeArtist);
     });
     cancelButton.innerText = 'Anulează';

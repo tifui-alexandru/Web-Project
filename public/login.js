@@ -1,9 +1,10 @@
-localStorage.setItem('loggedOn', 'false');
-
 let loginButton = document.getElementById('login-button');
-loginButton.addEventListener('click', () => {
-    displayLoginMenu();
-});
+if (loginButton) {
+    loginButton.addEventListener('click', () => {
+        currentPage = 'authPage';
+        displayLoginMenu();
+    });
+}
 
 function displayLoginMenu() {
     mainTag = document.getElementsByTagName('main');
@@ -60,6 +61,7 @@ function displayLoginMenu() {
     let confirmButton = document.createElement('button');
     confirmButton.className = 'login_button';
     confirmButton.addEventListener('click', () => {
+        currentPage = 'homePage';
         authenticateUser();
     });
     confirmButton.innerText = 'Confirmă';
@@ -68,6 +70,7 @@ function displayLoginMenu() {
     let registerButton = document.createElement('button');
     registerButton.className = 'login_button';
     registerButton.addEventListener('click', () => {
+        currentPage = 'registerPage';
         displayRegisterMenu();
     });
     registerButton.innerText = 'Înregistrează-te';
@@ -116,30 +119,14 @@ function authenticateUser() {
         else if (response.status == 200) {
             response.json().then(data => {
                 localStorage.setItem('loggedOn', 'true');
+                localStorage.setItem('activeUser', postUser.username);
                 mainToken = data;
+                localStorage.setItem('accessToken', String(data.accessToken));
+                localStorage.setItem('refreshToken', String(data.refreshToken));
                 displayLoginPageStyle(data);
             });
         }
     });
-}
-
-function displayLoginPageStyle(data) {
-    let loginButton = document.getElementById('login-button');
-    let container = loginButton.parentNode;
-    container.removeChild(loginButton);
-
-    let profileButton = document.createElement('button');
-    profileButton.id = 'profile-button';
-    profileButton.className = 'header_button';
-    profileButton.addEventListener('click', () => {
-        displayProfileMenu({ accessToken: data.accessToken, refreshToken: data.refreshToken });
-    });
-    profileButton.innerText = 'Profilul meu';
-    container.appendChild(profileButton);
-                
-    let mainPage = document.getElementById('main_container');
-    mainPage.innerHTML = mainPageHTML;
-    startWebPage();
 }
 
 function checkIfLoggedIn() {

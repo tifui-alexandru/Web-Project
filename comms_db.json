@@ -12,14 +12,14 @@
 				{
 					"id": "2",
 					"text": "Nu e bun",
-					"upVotes": "0",
-					"downVotes": 0
+					"upVotes": 1,
+					"downVotes": 1
 				},
 				{
 					"id": 3,
 					"text": "",
 					"upVotes": 1,
-					"downVotes": "0"
+					"downVotes": 100
 				},
 				{
 					"id": 4,
@@ -30,6 +30,18 @@
 				{
 					"id": 5,
 					"text": "vbewrb",
+					"upVotes": "0",
+					"downVotes": 100
+				},
+				{
+					"id": 6,
+					"text": "ewfewgewr",
+					"upVotes": "0",
+					"downVotes": 100
+				},
+				{
+					"id": 7,
+					"text": "ewegweg",
 					"upVotes": "0",
 					"downVotes": "0"
 				}

@@ -17,6 +17,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         let detailsButton = document.createElement('button');
         detailsButton.className = 'button';
         detailsButton.addEventListener('click', () => {
+            currentPage = 'delatilsPage_' + typeArtist + '_' + artists[i].id;
             displayDetalis(typeArtist, artists[i].id);
         });
         detailsButton.innerText = 'Detalii';
@@ -25,6 +26,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         editButton.className = 'button';
         editButton.addEventListener('click', () => {
             if (!checkIfLoggedIn()) return;
+            currentPage = 'editPage_' + typeArtist + '_' + artists[i].id;
             editArtist(typeArtist, artists[i]);
         });
         editButton.innerText = 'Editează';
@@ -41,6 +43,7 @@ function appendArtistsToDOM(artists, typeArtist) {
         let commButton = document.createElement('button');
         commButton.className = 'button';
         commButton.addEventListener('click', () => {
+            currentPage = 'commPage_' + typeArtist + '_' + artists[i].id;
             displayCommPage(typeArtist, artists[i].id);
         });
         commButton.innerText = 'Comentarii';
@@ -100,6 +103,7 @@ function appendDetailsToDOM(typeArtist, artist) {
     backButton.innerText = 'Înapoi';
     backButton.className = 'back_button';
     backButton.addEventListener('click', () => {
+        currentPage = 'artistsList_' + typeArtist;
         clearAddMenu(typeArtist);
     });
     info.appendChild(backButton);

@@ -8,6 +8,10 @@ function displayProfileMenu(token) {
     if (subtitle)
         subtitle.parentNode.removeChild(subtitle);
 
+    let hideButton = document.getElementById('hide-img-button');
+        if (hideButton) 
+            hideButton.parentNode.removeChild(hideButton);
+
     let profile = document.getElementById('profile_container');
     if (profile)
         profile.parentNode.removeChild(profile);
@@ -49,6 +53,7 @@ function getProfile(containerRef, data) {
     let logoutButton = document.createElement('button');
     logoutButton.className = 'user_profile_button';
     logoutButton.addEventListener('click', () => {
+        currentPage = 'homePage';
         Logout();
     });
     logoutButton.innerText = 'Deconectează-te';
@@ -65,6 +70,7 @@ function getProfile(containerRef, data) {
 
 function Logout() {
     localStorage.setItem('loggedOn', 'false');
+    localStorage.setItem('activeUser', null);
 
     let loginButton = document.getElementById('profile-button');
     let container = loginButton.parentNode;
@@ -74,6 +80,7 @@ function Logout() {
     profileButton.id = 'login-button';
     profileButton.className = 'header_button';
     profileButton.addEventListener('click', () => {
+        currentPage = 'authPage';
         displayLoginMenu();
     });
     profileButton.innerText = 'Autentificare';

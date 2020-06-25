@@ -153,6 +153,7 @@ function displayCommPage(typeArtist, idArtist) {
             };
             addComm.addEventListener('click', () => {
                 if (!checkIfLoggedIn()) return;
+                currentPage = 'addCommentPage_' + typeArtist + '_' + idArtist;
                 addComment(typeArtist, idArtist, commsList, postComment);
             });
         }
@@ -161,6 +162,7 @@ function displayCommPage(typeArtist, idArtist) {
                 displayComm(typeArtist, idArtist, commsList);
                 addComm.addEventListener('click', () => {
                     if (!checkIfLoggedIn()) return;
+                    currentPage = 'addCommentPage_' + typeArtist + '_' + idArtist;
                     addComment(typeArtist, idArtist, commsList, putComment);
                 });
             })
@@ -244,6 +246,7 @@ function addComment(typeArtist, idArtist, commentsList, func) {
     postCommButton.className = 'post-comment-button';
     postCommButton.innerText = 'Postează comentariul';
     postCommButton.addEventListener('click', () => {
+        currentPage = 'commPage_' + typeArtist + '_' + idArtist;
         func(typeArtist, idArtist, textBox.value, commentsList);
         alert('Comentariu adăugat cu succes');
     });
