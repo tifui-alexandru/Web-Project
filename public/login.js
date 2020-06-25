@@ -15,6 +15,10 @@ function displayLoginMenu() {
     if (subtitle)
         subtitle.parentNode.removeChild(subtitle);
 
+    let hideButton = document.getElementById('hide-img-button');
+        if (hideButton) 
+            hideButton.parentNode.removeChild(hideButton);
+
     let profile = document.getElementById('profile_container');
         if (profile)
             profile.parentNode.removeChild(profile);

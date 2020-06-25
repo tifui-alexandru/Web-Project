@@ -175,6 +175,7 @@ function clearArtists(typeArtist) {
 }
 
 function startWebPage() {
+    showImg();
     for (let i = 0; i < musicTypeArray.length; ++i) {
         let elem = document.getElementById(musicTypeArray[i] + "_button");
         musicTypeDict[musicTypeArray[i]].element = document.getElementById(musicTypeArray[i]);
@@ -219,6 +220,42 @@ else
 let mainPageHTML = document.getElementById('main_container').innerHTML;
 
 startWebPage();
+
+function showImg() {
+    const images = document.getElementsByClassName('artist-img');
+    let button = document.getElementById('hide-img-button');
+    let newButton = button.cloneNode(true);
+    newButton.innerText = 'Ascunde imaginile';
+    newButton.className = 'hide-img-button';
+    newButton.id = 'hide-img-button';
+
+    button.parentNode.replaceChild(newButton, button);
+
+    newButton.addEventListener('click', () => {
+        for (let i = 0; i < images.length; ++i) {
+            images[i].style.display = 'none';
+        }
+        hideImg();
+    });
+}
+
+function hideImg() {
+    const images = document.getElementsByClassName('artist-img');
+    let button = document.getElementById('hide-img-button');
+    let newButton = button.cloneNode(true);
+    newButton.innerText = 'Arată imaginile';
+    newButton.className = 'hide-img-button';
+    newButton.id = 'hide-img-button';
+
+    button.parentNode.replaceChild(newButton, button);
+
+    newButton.addEventListener('click', () => {
+        for (let i = 0; i < images.length; ++i) {
+            images[i].style.display = 'block';
+        }
+        showImg();
+    });
+}
 
 function clearAllArtists() {
     for (let i = 0; i < musicTypeArray.length; ++i) {

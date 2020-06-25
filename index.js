@@ -136,6 +136,8 @@ for (let i = 0; i < typeArtistArray.length; ++i) {
 
 // login stuff -----------------------------------------------------------------------------------------------------------------------------------------
 
+let activeUser = null;
+
 function readJSONUsers() {
     return JSON.parse(fs.readFileSync('users_db.json'));
 }
@@ -229,6 +231,8 @@ app.post('/users/login', async (req, res) => {
             const refreshToken = jwt.sign({ username: user.username }, process.env.REFRESH_TOKEN_SECRET);
 
             refreshTokenList.push(refreshToken);
+
+            activeUser = user.username;
 
             res.json({ accessToken: accessToken, refreshToken: refreshToken });
         }
@@ -346,6 +350,48 @@ for (let i = 0; i < typeArtistArray.length; ++i) {
     updateComm(shortTypeArtistsArray[i]);
     postComm(shortTypeArtistsArray[i]);
 }
+
+
+// history stuff--------------------------------------------------------------------------------------------------------------------------
+
+function readJSONHistory() {
+    return JSON.parse(fs.readFileSync('history_db.json'));
+}
+
+function writeJSONHistory(content) {
+    fs.writeFileSync('history_db.json',
+        JSON.stringify(content, null, '\t'),
+        'utf-8',
+        err => {
+            if (err) {
+                console.log(err)
+            }
+        });
+} 
+
+function getCurrentDate() {
+    let today = new Date();
+
+    return String(today.getDay()) + '-' + String(today.getMonth()) + '-' + String(today.getFullYear()) + ' ' +
+    String(today.getHours()) + ':' + String(today.getMinutes()) + ':' + String(today.getSeconds()) + ':' + String(today.getMilliseconds());
+}
+
+app.post('/history', (req, res) => {
+    let histList = readJSONHistory();
+
+    const action = {
+        "id": uuidv1(),
+        "name": req.body.name,
+        "user": activeUser,
+        "date": getCurrentDate(),
+        "modified_item": req.id
+    }
+
+    histList.push(action);
+    writeJSONHistory(histList);
+
+    res.json(action);
+});
 
 
 app.use(express.static(path.join(__dirname, 'public')));

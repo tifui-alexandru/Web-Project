@@ -88,6 +88,7 @@ function displayAddMenu(typeArtist) {
     let updateButton = document.createElement('button');
     updateButton.className = 'add_menu_button';
     updateButton.addEventListener('click', () => {
+        addHistoryEvent('Artist adăugat', String(typeArtist));
         postArtist(typeArtist);
         clearAddMenu(typeArtist);
     });

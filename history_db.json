@@ -1,0 +1,57 @@
+[
+	{
+		"id": "0",
+		"name": "none",
+		"user": "none",
+		"date": "none",
+		"modified_item": "1"
+	},
+	{
+		"id": "d67dcf40-b6d5-11ea-8b03-b135ed0fe856",
+		"name": "Item modificat",
+		"user": "eu",
+		"date": 1593084013108
+	},
+	{
+		"id": "dc8965b0-b6d6-11ea-b306-071079bf0371",
+		"name": "Item modificat",
+		"user": "eu",
+		"date": "function getDay() { [native code] }-function getMonth() { [native code] }-function getFullYear() { [native code] } function getHours() { [native code] } function getMinutes() { [native code] } function getSeconds() { [native code] }function getMilliseconds() { [native code] }"
+	},
+	{
+		"id": "fbedbe60-b6d6-11ea-96f7-7bd80f442d4d",
+		"name": "Item modificat",
+		"user": "eu",
+		"date": "function getDay() { [native code] }-function getMonth() { [native code] }-function getFullYear() { [native code] } function getHours() { [native code] } function getMinutes() { [native code] } function getSeconds() { [native code] }function getMilliseconds() { [native code] }"
+	},
+	{
+		"id": "31073040-b6d7-11ea-bc50-6f456f6d3729",
+		"name": "Item modificat",
+		"user": "eu",
+		"date": "4-5-2020 14 29 54501"
+	},
+	{
+		"id": "42d0de70-b6d7-11ea-a307-05c1b5e2d674",
+		"name": "Item modificat",
+		"user": "eu",
+		"date": "4-5-2020 14 30 24 343"
+	},
+	{
+		"id": "4caea800-b6d7-11ea-b848-e9ddb3e95a5f",
+		"name": "Item modificat",
+		"user": "eu",
+		"date": "4-5-2020 14:30:40:896"
+	},
+	{
+		"id": "6485c6c0-b6eb-11ea-9fa1-5f5b41e4d24d",
+		"name": "Item modificat",
+		"user": null,
+		"date": "4-5-2020 16:54:30:828"
+	},
+	{
+		"id": "e7959090-b6eb-11ea-bb6c-f91ab2c856a1",
+		"name": "Item modificat",
+		"user": "alex",
+		"date": "4-5-2020 16:58:10:713"
+	}
+]

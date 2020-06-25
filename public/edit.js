@@ -66,6 +66,7 @@ function editArtist(typeArtist, artist) {
     let updateButton = document.createElement('button');
     updateButton.className = 'edit_menu_button';
     updateButton.addEventListener('click', () => {
+        addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         postArtist(typeArtist);
         clearAddMenu(typeArtist);
     });
@@ -95,6 +96,7 @@ function editArtist(typeArtist, artist) {
     updateButton = document.getElementById('update-button');
 
     updateButton.addEventListener('click', () => {
+        addHistoryEvent('Artist editat', String(typeArtist) + '/' + String(artist.id));
         updateArtist(typeArtist, artist);
     });
 }

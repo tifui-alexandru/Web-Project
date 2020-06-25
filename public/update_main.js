@@ -15,6 +15,10 @@ function updateMain(typeArtist) {
     let subtitle = document.getElementById('subtitle');
     if (subtitle)
         subtitle.parentNode.removeChild(subtitle);
+    
+    let hideButton = document.getElementById('hide-img-button');
+    if (hideButton) 
+        hideButton.parentNode.removeChild(hideButton);
 
     let profile = document.getElementById('profile_container');
     if (profile)
@@ -30,6 +34,7 @@ function updateMain(typeArtist) {
     let addButton = document.createElement('button');
     addButton.className = 'button';
     addButton.addEventListener('click', () => {
+        if (!checkIfLoggedIn()) return;
         displayAddMenu(typeArtist);
     });
     addButton.innerText = 'Adaugă trupă';
